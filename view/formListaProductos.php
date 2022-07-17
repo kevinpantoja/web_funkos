@@ -2,8 +2,8 @@
 
 include_once("../shared/header.php");
 include_once("../shared/footer.php");
-class FormProductos{
-    public function showForm($array){
+class FormListaProductos{
+    public function showForm($array,$buscado){
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -11,7 +11,7 @@ class FormProductos{
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Producto</title>
+        <title>Producto Buscado</title>
     </head>
     <body>    
         <?php Header::obtenerInstancia(); ?>
@@ -21,6 +21,7 @@ class FormProductos{
                 <input type="submit" value="buscar" name="buscar">
             </form>
         </div>
+        <p><strong>Elemento buscado: </strong><?php echo $buscado; ?></p>
         <h1>Titulos</h1>
         <section class="contenedor_productos">
             <?php for($i = 0; $i < count($array); $i++){

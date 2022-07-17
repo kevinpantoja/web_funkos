@@ -1,10 +1,7 @@
 <?php 
 
 
-include("./view/formProductos.php");
-
-$formProductos = new FormProductos();
-$formProductos->showForm();
+header("location: controller/getProductos.php");
 
 
 
