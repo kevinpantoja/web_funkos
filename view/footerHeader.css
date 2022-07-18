@@ -47,5 +47,6 @@ footer{
     justify-content: center;
     padding: 3rem 1rem;
     font-size: 1.5rem;
-    color: var(--blanco)
+    color: var(--blanco);
+    margin-top: .3rem;
 }

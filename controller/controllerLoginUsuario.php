@@ -14,13 +14,29 @@
 							$respuesta = $obUsuario -> validarEstadoUsuario($login);
 							if($respuesta == 1)
 							{
-								include_once('../model/modeloUsuarioPrivilegio.php');
-								$objUsuarioPrivilegio = new UsuarioPrivilegio();
-								$listaPrivilegios = $objUsuarioPrivilegio -> obtenerPrivilegios($login);
-								
-								include_once('../view/formPrincipal.php');
-								$objFormPrincipal = new formPrincipal();
-								$objFormPrincipal -> formPrincipalShow($listaPrivilegios);								
+								include_once("../model/modelUsuario.php");
+								$modelUsuario = new modelUsuario();
+								$rol = $modelUsuario->obtenerRol($login);
+								if($rol["rol"] == "cliente"){
+									include_once('../model/modelProductos.php');
+									$objProducto= new ModelProductos();
+									$lista = $objProducto -> listarProductos();
+									$tipos = $objProducto -> listarFiltros('tipo_producto');
+									$categorias = $objProducto -> listarFiltros('categoria_producto');
+									$series = $objProducto -> listarFiltros('serie_producto');
+									include_once('../view/formProductos.php');
+									$obj=new FormProductos();
+									$obj->showForm($lista, $tipos, $categorias, $series);	
+								}else{
+									include_once('../model/modeloUsuarioPrivilegio.php');
+									$objUsuarioPrivilegio = new UsuarioPrivilegio();
+									$listaPrivilegios = $objUsuarioPrivilegio -> obtenerPrivilegios($login);
+									
+									include_once('../view/formPrincipal.php');
+									$objFormPrincipal = new formPrincipal();
+									$objFormPrincipal -> formPrincipalShow($listaPrivilegios);	
+
+								}						
 							}
 							else
 							{

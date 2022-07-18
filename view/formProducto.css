@@ -21,6 +21,7 @@ html{
     gap: 1rem;
     padding: .8rem 0;
     align-items: center;
+    margin-bottom: .3rem;
 }
 .buscador p{
     text-align: center;
@@ -58,6 +59,7 @@ html{
 .producto_individual{
     background: var(--plomo);
     max-width: 400px;
+    width: 100%;
     box-shadow: 4px 4px 10px var(--plomo_oscuro);
     margin: auto;
     padding: 1rem;
@@ -93,8 +95,24 @@ html{
 }
 .contenedor_body{
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 300px 1fr;
 }
 .barra_filtros{
     background: var(--plomo);
+    font-size: 1rem;
+    padding: 1rem .5rem;
+}
+.barra_filtros h2{
+    margin-bottom: 1rem;
+}
+.input_select{
+    width: 100%;
+    border: 1px var(--blanco) solid;
+    font-size: 1rem;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+}
+.productos > h1{
+    text-align: center;
+    margin-top: .5rem;
 }

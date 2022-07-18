@@ -14,6 +14,14 @@
 			else
 				return 0;
 		}
+
+		public function obtenerRol($login){
+			$conn=conexionSingleton::obtenerInstancia()->conexion;
+			$consulta = "SELECT rol FROM usuarios where login = '$login' ";
+			$resultado = $conn->prepare($consulta);
+            $resultado->execute();
+			return $resultado->fetch(PDO::FETCH_ASSOC);
+		}
 		
 		public function validarUsuarioPassword($login,$password)
 		{

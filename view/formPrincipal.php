@@ -31,7 +31,6 @@
                         }				
                     ?>
                     <br>
-                    <a class="boton_continuar" href="../controller/getProductos.php">Continuar</a>
                     </section>
                 </body>
                 </html>
