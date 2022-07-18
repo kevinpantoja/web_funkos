@@ -24,7 +24,7 @@ if(isset($_POST["buscar"])){
         $series = $objProducto -> listarFiltros('serie_producto');
         include_once('../view/formProductos.php');
         $obj=new FormProductos();
-        $obj->showForm($lista, $tipos, $categorias, $series);
+        $obj->showFormProductos($lista, $tipos, $categorias, $series);
     }
 }
 

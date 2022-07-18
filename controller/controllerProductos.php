@@ -23,7 +23,7 @@ class ControllerProductos{
             }else{
                 include_once("../view/formListaProductos.php");
                 $formLista = new FormListaProductos();
-                $formLista->showForm($resultado,$tipos, $categorias, $series, $buscado);
+                $formLista->showFormListaProductos($resultado,$tipos, $categorias, $series, $buscado);
             }
         }
 
@@ -39,7 +39,7 @@ class ControllerProductos{
         $series = $objProducto -> listarFiltros('serie_producto');
         include_once('../view/formProductos.php');
         $obj=new FormProductos();
-        $obj->showForm($lista, $tipos, $categorias, $series);
+        $obj->showFormProductos($lista, $tipos, $categorias, $series);
     }
 
     public function listarProductosFiltrados($tipo, $categoria, $serie)
@@ -54,11 +54,11 @@ class ControllerProductos{
             $formMensaje->FormMensajeShow("info.png","No hay resultados para los filtros seleccionados","<a href='../controller/getProductos.php'>Regresar</a>");
         } else {
             include_once('../view/formProductos.php');
-            $obj=new formProductos();
+            $obj=new FormProductos();
             $tipos = $objProducto -> listarFiltros('tipo_producto');
             $categorias = $objProducto -> listarFiltros('categoria_producto');
             $series = $objProducto -> listarFiltros('serie_producto');
-            $obj->showForm($lista, $tipos, $categorias, $series);
+            $obj->showFormProductos($lista, $tipos, $categorias, $series);
         }
        
     }

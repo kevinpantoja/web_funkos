@@ -5,7 +5,7 @@ include_once("../shared/footer.php");
 
 class FormListaProductos
 {
-    public function showForm($array, $tipos, $categorias, $series, $buscado)
+    public function showFormListaProductos($array, $tipos, $categorias, $series, $buscado)
     {
 ?>
         <!DOCTYPE html>
