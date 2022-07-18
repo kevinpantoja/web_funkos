@@ -5,8 +5,12 @@ class ControllerProductos{
     public function buscarProductosPorNombre($buscado){
         $array = explode(" ",$buscado);
         include_once("../model/modelProductos.php");
-        $modelProducto = new ModelProductos();
-        $resultado = $modelProducto->filtrarNombreProductos($array);
+        $objProducto= new ModelProductos();
+        $resultado = $objProducto -> filtrarNombreProductos($array);
+        $tipos = $objProducto -> listarFiltros('tipo_producto');
+        $categorias = $objProducto -> listarFiltros('categoria_producto');
+        $series = $objProducto -> listarFiltros('serie_producto');
+
         if($resultado == false){
 
         }else{
@@ -17,7 +21,7 @@ class ControllerProductos{
             }else{
                 include_once("../view/formListaProductos.php");
                 $formLista = new FormListaProductos();
-                $formLista->showForm($resultado,$buscado);
+                $formLista->showForm($resultado,$tipos, $categorias, $series, $buscado);
             }
         }
 
@@ -45,7 +49,7 @@ class ControllerProductos{
         if(count($lista) == 0) {
             include("../shared/formMensaje.php");
             $formMensaje = new FormMensaje();
-            $formMensaje->showMensaje("No hay resultados para los filtros seleccionados","","Regresar","../controller/getProductos.php");
+            $formMensaje->FormMensajeShow("No hay resultados para los filtros seleccionados","","Regresar","../controller/getProductos.php");
         } else {
             include_once('../view/formProductos.php');
             $obj=new formProductos();

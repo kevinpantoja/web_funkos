@@ -2,8 +2,9 @@
 
 include_once("../shared/header.php");
 include_once("../shared/footer.php");
+
 class FormListaProductos{
-    public function showForm($array,$buscado){
+    public function showForm($array,$tipos, $categorias, $series,$buscado){
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -11,9 +12,9 @@ class FormListaProductos{
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Producto Buscado</title>
         <link rel="stylesheet" href="../view/footerHeader.css">
         <link rel="stylesheet" href="../view/formProducto.css">
+        <title>Producto</title>
     </head>
     <body>    
         <?php Header::obtenerInstancia(); ?>
@@ -27,22 +28,51 @@ class FormListaProductos{
         <h1>Titulos</h1>
         <div class="contenedor_body">
             <nav class="barra_filtros">
-                <form action="">
-                    <div class="lista_filtros">
-                        <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>    
-                        <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                    </div>
-                    <input type="submit" value="Filtrar" name="filtrar">
+                <form class="filtros" method="POST" action="../controller/getProductos.php">
+                    <h2>FILTROS</h2>
+
+                    <h3>TIPO DE PRODUCTO</h3>
+                    <select name="tipo_producto" id="tipo_producto">
+                        <option value="0">Tipo de Producto</option>
+                        <?php
+                            foreach($tipos as $tipo){
+                                ?>
+                        <option value="<?php echo $tipo['idTipo'] ?>"><?php echo $tipo['nombreTipo'] ?></option>
+                        <?php
+                            }
+                        ?>
+                    </select>
+
+                    <br>
+                    <h3>CATEGORÍA</h3>
+                    <select name="categoria_producto" id="categoria_producto">
+                        <option value="0">Categoria</option>
+                        <?php
+                            foreach($categorias as $categoria){
+                                ?>
+                        <option value="<?php echo $categoria['idCategoria'] ?>">
+                            <?php echo $categoria['nombreCategoria'] ?></option>
+                        <?php
+                            }
+                        ?>
+                    </select>
+
+                    <br>
+                    <h3>SERIE</h3>
+                    <select name="serie_producto" id="serie_producto">
+                        <option value="0">Serie</option>
+                        <?php
+                            foreach($series as $serie){
+                                ?>
+                        <option value="<?php echo $serie['idSerie'] ?>"><?php echo $serie['nombreSerie'] ?>
+                        </option>
+                        <?php
+                            }
+                        ?>
+                    </select>
+                    <br>
+
+                    <input type="submit" value="Aplicar filtros" name="filtrar">
                 </form>
             </nav>
             <section class="contenedor_productos">
@@ -64,12 +94,12 @@ class FormListaProductos{
                 } ?>
             </section>    
         </div>
+        
         <?php Footer::obtenerInstancia(); ?>
     </body>
     </html>
     <?php
     }
 }
-
 
 ?>
