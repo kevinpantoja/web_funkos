@@ -4,7 +4,9 @@ class Footer{
     static private $instancia = null; 
     private function __construct(){
         ?>
-        <p>Footer 2022</p>
+        <footer>
+            <span>Footer 2022</span>    
+        </footer>
         <?php
     }  
     

@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+html{
+    font-size: 18px;
+}
+:root{
+    --negro: #000000;
+    --blanco: #FFFFFF;
+    --plomo: #e5e5e5;
+    --plomo_oscuro: #6c757d;
+}
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+.buscador{
+    background: var(--plomo);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: .8rem 0;
+    align-items: center;
+}
+.buscador p{
+    text-align: center;
+    font-size: 1.2rem;
+}
+.buscador input[type="text"]{
+    background: var(--blanco);
+    border: 2px solid var(--negro);
+    border-radius: 10px;
+    width: 400px;
+    line-height: 1.5rem;
+    color: var(--negro);
+    font-size: 1rem;
+    padding: 0 1rem;
+}
+.buscador input[type="submit"],.producto_individual input[type="submit"],.barra_filtros input[type="submit"]{
+    background: var(--negro);
+    border: 3px solid var(--negro);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: .3rem 1rem;
+    color: var(--blanco);
+    cursor: pointer;
+    margin: .5rem 0;
+}
+.contenedor_productos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 1rem;
+}
+.producto_individual{
+    background: var(--plomo);
+    max-width: 400px;
+    box-shadow: 4px 4px 10px var(--plomo_oscuro);
+    margin: auto;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+.producto_individual input[type="text"]{
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+    padding-left: .5rem;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: .5rem;
+}
+.producto_individual > form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.producto_individual img{
+    width: 200px;
+    height: 250px;
+}
+.producto_individual h2{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.producto_individual input[type="submit"]:hover{
+    background: var(--blanco);
+    border: 3px solid var(--negro);
+    font-weight: bold;
+    color: var(--negro);
+}
+.contenedor_body{
+    display: grid;
+    grid-template-columns: 250px 1fr;
+}
+.barra_filtros{
+    background: var(--plomo);
+}

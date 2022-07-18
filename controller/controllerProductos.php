@@ -13,7 +13,7 @@ class ControllerProductos{
             if(count($resultado) == 0){
                 include("../shared/formMensaje.php");
                 $formMensaje = new FormMensaje();
-                $formMensaje->showMensaje("No se encontraron resultados","","regresar","../controller/getProductos.php");
+                $formMensaje->formMensajeShow("No se encontraron resultados","","../controller/getProductos.php");
             }else{
                 include_once("../view/formListaProductos.php");
                 $formLista = new FormListaProductos();
