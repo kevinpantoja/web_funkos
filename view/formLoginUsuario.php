@@ -32,8 +32,8 @@
                                         <label class="formulario_label" for="apaterno">Password</label>
                                         <input placeholder="Password" autocomplete="off"  class="input_text" name="txtPassword" type="password" id="apaterno">
                                     </div>
-                                    <div class="formulario_input _50">
-                                        <input class="boton_enviar" autocomplete="off"  type="submit" name="bntAceptar" id="aceptar" value="Ingresar" >
+                                    <div class="formulario_input _100">
+                                        <input class="boton_enviar"autocomplete="off"  type="submit" name="bntAceptar" id="aceptar" value="Ingresar" >
                                     </div>
                                 </form>
                             </div>

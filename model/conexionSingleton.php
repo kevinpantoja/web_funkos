@@ -6,7 +6,7 @@
 
 		private function __construct()
 		{
-			$connection = "mysql:host="."localhost".";dbname="."desarrollo_web".";charset="."utf8mb4";
+			$connection = "mysql:host="."localhost".";dbname="."proyecto_funkos".";charset="."utf8mb4";
             $pdo = new PDO($connection,"root","");
             $this->conexion = $pdo;
 		}	
