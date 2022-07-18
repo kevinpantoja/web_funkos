@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100&family=Sofia&family=Trocchi&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #fff;
+    font-family: 'Barlow', sans-serif;
+}
+
+.container-filtros {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: auto;
+    margin: 20px;
+    padding: 20px;
+}
+
+.section-productos {
+    margin: 20px;
+    width: 90%;
+    background-color: #f3f3f7;
+    
+}
+
+.section-productos  h2{
+    margin: 20px 20px 0 20px;
+}
+
+.container-productos {
+    
+    display: flex;
+    /* display: grid; */
+    /* grid-template-columns: repeat(4, 1fr); */
+}
+
+a {
+    color: var(--blanco);
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* Navigation */
+
+.nav-main {
+    background-color: #000;
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 20px 0;
+    margin: 0;
+    color: white;
+}
+
+.nav-brand {
+    width: 50px;
+}
+
+/* NAV LEFT */
+.nav-main ul {
+    display: flex;   
+}
+
+.nav-main ul li {
+    padding: 10px;
+}
+
+.nav-main ul li a{
+    padding: 2px;
+}
+
+.nav-main ul li a:hover {
+    border-bottom: 2px solid var(--blanco);
+    text-decoration: underline;
+}
+
+
+
+.nav-main ul.nav-menu {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.menu-btn {
+    position: absolute;
+    cursor: pointer;
+    top: 15px;
+    right: 30px;
+    display: none;
+    z-index: 2;
+    font-size: 1.5rem;
+}
+
+/* PRODUCTOS */
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 300px;
+    height: auto;
+    margin: 20px;
+    text-align: center;
+    background-color: #fff;
+    display: inline-block;
+    padding: 20px;
+    
+  }
+
+  .nombre-producto  {
+    height: 40px;
+  }
+  
+  .price {
+    color: grey;
+    font-size: 22px;
+  }
+  
+  .card button {
+    font-family: 'Barlow', sans-serif;
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  .card button:hover {
+    opacity: 0.7;
+  }
+
+  .card img {
+    height: 250px;
+  }
+
+  /* buscador */
+
+  .buscador {
+    border-radius: 4px;
+    width: 70%;
+    height: 2rem;
+
+  }
