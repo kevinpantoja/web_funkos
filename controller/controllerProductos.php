@@ -38,8 +38,8 @@ class ControllerProductos{
         $categorias = $objProducto -> listarFiltros('categoria_producto');
         $series = $objProducto -> listarFiltros('serie_producto');
         include_once('../view/formProductos.php');
-        $obj=new formProducto();
-        $obj->showProductos($lista, $tipos, $categorias, $series);
+        $obj=new FormProductos();
+        $obj->showForm($lista, $tipos, $categorias, $series);
     }
 
     public function listarProductosFiltrados($tipo, $categoria, $serie)
