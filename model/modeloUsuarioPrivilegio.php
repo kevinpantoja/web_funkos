@@ -1,10 +1,10 @@
 <?php
-	include_once('conexionSingleton.php');
+	include_once('../shared/conexionBD.php');
 	class UsuarioPrivilegio 
 	{
 		public function obtenerPrivilegios($login)
 		{
-			$conn=conexionSingleton::Obtenerinstancia()->conexion;
+			$conn=conexionBD::Obtenerinstancia()->conexion;
 			$consulta = " SELECT P.labelPrivilegio,P.pathPrivilegio,P.iconPrivilegio
 			                      FROM usuarios U, privilegios P, usuarioprivilegios UP
 								    WHERE U.rol = UP.rol AND P.idPrivilegio = UP.idPrivilegio AND U.login = '$login' ";

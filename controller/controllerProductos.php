@@ -12,12 +12,14 @@ class ControllerProductos{
         $series = $objProducto -> listarFiltros('serie_producto');
 
         if($resultado == false){
-
+            include("../shared/formMensaje.php");
+            $formMensaje = new FormMensaje();
+            $formMensaje->FormMensajeShow("info.png","No hay resultados con los terminos buscados","<a href='../controller/getProductos.php'>Regresar</a>");
         }else{
             if(count($resultado) == 0){
                 include("../shared/formMensaje.php");
                 $formMensaje = new FormMensaje();
-                $formMensaje->formMensajeShow("No se encontraron resultados","","../controller/getProductos.php");
+                $formMensaje->FormMensajeShow("info.png","No hay resultados con los términos buscados","<a href='../controller/getProductos.php'>Regresar</a>");
             }else{
                 include_once("../view/formListaProductos.php");
                 $formLista = new FormListaProductos();
@@ -49,7 +51,7 @@ class ControllerProductos{
         if(count($lista) == 0) {
             include("../shared/formMensaje.php");
             $formMensaje = new FormMensaje();
-            $formMensaje->FormMensajeShow("No hay resultados para los filtros seleccionados","","Regresar","../controller/getProductos.php");
+            $formMensaje->FormMensajeShow("info.png","No hay resultados para los filtros seleccionados","<a href='../controller/getProductos.php'>Regresar</a>");
         } else {
             include_once('../view/formProductos.php');
             $obj=new formProductos();

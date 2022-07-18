@@ -1,5 +1,5 @@
 <?php 
-include("../shared/conexionBD.php");
+include_once("../shared/conexionBD.php");
 class ModelProductos{
      
     function obtenerProductos(){

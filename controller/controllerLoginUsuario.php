@@ -56,7 +56,7 @@
 			{
 					include_once('../shared/formMensaje.php');
 					$objformMensaje = new formMensaje;
-					$objformMensaje -> formMensajeShow("alert.png","no se encontró el usuario<br>intente nuevamente","<a href='../index.php'>ir al inicio </a>");	
+					$objformMensaje -> formMensajeShow("alert.png","no se encontro el usuario<br>intente nuevamente","<a href='../index.php'>ir al inicio </a>");	
 			}
 		}
 	}
