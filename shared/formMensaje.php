@@ -20,7 +20,7 @@
                         <table width="285" border="0" align="center">
                                 <tr>
                                     <td width="103" rowspan="2" align="center"><img src="../assets/imgenes/<?php echo $icono?>" width="100" height="100"></td>
-                                    <td width="172"> <strong>MENSAJE:</strong></td>
+                                    <td width="172" class="title"> <strong>MENSAJE:</strong></td>
                                 </tr>
                                 <tr>
                                     <td><table class="contenido" width="200" border="0" align="center">
