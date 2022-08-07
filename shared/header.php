@@ -12,7 +12,7 @@ class Header{
             <ul>
                 <li><a class="header_direccion" href="">Productos</a></li>
                 <li><a class="header_direccion" href="">Historial</a></li>
-                <li><a class="header_direccion" href="">Datos Personales</a></li>
+                <li><a class="header_direccion" href="../controller/getDatosPersonales.php">Datos Personales</a></li>
                 <li><a class="header_direccion" href=""></a></li>
             </ul>
 

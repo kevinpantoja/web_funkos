@@ -8,6 +8,7 @@
 	}
 
 	$boton = $_POST['bntAceptar'];
+
 	if(isset($boton))
 	{
 		$login = strtolower(trim($_POST['txtLogin']));

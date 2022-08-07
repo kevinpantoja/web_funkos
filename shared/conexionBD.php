@@ -6,7 +6,7 @@ class conexionBD
 
     private function __construct()
     {
-        $connection = "mysql:host=" . "localhost" . ";dbname=" . "desarrollo_web" . ";charset=" . "utf8mb4";
+        $connection = "mysql:host=" . "localhost:3310" . ";dbname=" . "desarollo_web" . ";charset=" . "utf8mb4";
 
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
