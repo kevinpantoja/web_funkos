@@ -1,7 +1,6 @@
 <?php
-$boton = $_POST['btnCancelar'];
 
-if (isset($boton)) {
+if (isset($_POST['btnCancelar'])) {
     $idOrdenCompra = $_POST['txtIdOrdenCompra'];
 
     include_once('controllerOrdenCompra.php');

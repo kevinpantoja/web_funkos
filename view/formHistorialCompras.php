@@ -5,7 +5,7 @@
 
 class FormHistorialCompras
 {
-    public function showFormHistorialCompras(/*$arrayOrdenesCompra*/)
+    public function showFormHistorialCompras($arrayOrdenesCompra)
     {
 ?>
         <!DOCTYPE html>
@@ -24,22 +24,22 @@ class FormHistorialCompras
                 <div class="orden_compra">
                     <h1>Historial ordenes de compra</h1>
                     <section class="contenedor_ordenes">
-                        <?php for ($i = 0; $i < 4; $i++) {
+                        <?php for ($i = 0; $i < count($arrayOrdenesCompra); $i++) {
                         ?>
                             <div class="orden_compra_individual">
                                 <form class="formulario" id="miFormulario" name="form1" action="controller/getOrdenCompra.php" method="POST">
                                     <div>
-                                        ID: <?php /*echo $arrayOrdenesCompra[$i]["idOrdenCompra"]*/; ?>
+                                        ID: <input type="text" id="txtIdOrdenCompra" name="txtIdOrdenCompra" value="<?php echo $arrayOrdenesCompra[$i]["idOrdenCompra"]; ?>" readonly>
                                     </div>
                                     <div>
-                                        Fecha de solicitud: <?php /*echo $arrayOrdenesCompra[$i]["fecha_compra"]*/; ?>
+                                        Fecha de solicitud: <?php echo $arrayOrdenesCompra[$i]["fechaDePedido"]; ?>
                                     </div>
                                     <div>
-                                        Estado: <?php /*echo $arrayOrdenesCompra[$i]["estado"]*/; ?>
+                                        Estado: <?php echo $arrayOrdenesCompra[$i]["estado"]; ?>
                                     </div>
                                     <div>
+                                        <input class="btnCancelar" autocomplete="off" type="submit" name="btnCancelar" id="btnCancelar" value="Cancelar">
                                     </div>
-                                    <input class="btnCancelar" autocomplete="off" type="submit" name="btnCancelar" id="btnCancelar" value="Cancelar">
                                 </form>
                             </div>
                         <?php
