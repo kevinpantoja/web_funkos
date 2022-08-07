@@ -19,9 +19,23 @@ class Header{
             <ul>
                 <li><a href=""><img class="header_icono" src="../img/user_logo.png" alt=""></a></li>
                 <li><a href=""><img class="header_icono" src="../img/carrito_logo.png" alt=""></a></li>
-                <li><a class="header_logout" href="">Log Out</a></li>
+                <form class="form_logout" action="../controller/logout.php" method="POST">
+                    <li><a class="header_logout" href="">Log Out</a></li>
+                </form>
+                
             </ul>    
         </div>
+        <script>
+            window.addEventListener("load",m => {
+                btnLogout = document.querySelector(".header_logout");
+                formLogout = document.querySelector(".form_logout");
+                btnLogout.addEventListener("click",e=>{
+                    e.preventDefault();
+                    formLogout.submit();    
+                });
+            });
+            
+        </script>
         
         <?php
     }  

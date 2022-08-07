@@ -16,20 +16,24 @@
                 </head>
                 <body>
                     <section class="contenedor">
-                    <h2 style="background-color: white;">El usuario tiene Acceso a:</h2>
+                    <h2 class="titulo_principal"style="background-color: white;">El usuario tiene Acceso a:</h2>
                     <?php
                         $maximo = count($listaPrivilegios);
                         for($i = 0; $i < $maximo; $i++)
                         {
                             ?>
-                            <form name="fom1" method="post" action="<?php echo $listaPrivilegios[$i]['pathPrivilegio']?>">
+                            <form class="botones_admin_form" name="fom1" method="post" action="<?php echo $listaPrivilegios[$i]['pathPrivilegio']?>">
                                 <img src="../assets/imgenes/<?php echo $listaPrivilegios[$i]['iconPrivilegio']?>" width="25" height="25">
-                                <input type="submit" name="bntProceso" value="<?php echo $listaPrivilegios[$i]['labelPrivilegio']?>" >
+                                <input type="submit" class="botones_admin" name="bntProceso" value="<?php echo $listaPrivilegios[$i]['labelPrivilegio']?>" >
                             </form>
                             <br>
                             <?php	
-                        }				
+                        }	
+                        			
                     ?>
+                    <form class="botones_admin_form" name="fom1" method="post" action="../controller/logout.php" method="POST">
+                        <input type="submit" class="botones_admin" name="bntProceso" value="Salir" >
+                    </form>
                     <br>
                     </section>
                 </body>
