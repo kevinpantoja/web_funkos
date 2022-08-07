@@ -7,8 +7,7 @@
 			return 0;	
 	}
 
-	$boton = $_POST['bntAceptar'];
-	if(isset($boton))
+	if(isset($_POST['bntAceptar']))
 	{
 		$login = strtolower(trim($_POST['txtLogin']));
 		$password = trim($_POST['txtPassword']);

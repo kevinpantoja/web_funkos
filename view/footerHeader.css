@@ -37,6 +37,19 @@ html{
     height: 50px;
     padding: 3px;
 }
+.header_icono .carrito{
+    display: flex;
+    position: absolute;   
+}
+.number_carrito{
+    background-color: white;
+    color: black;
+    font-size: 0.7rem;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    padding: 5px;
+}
 .header_direccion,.header_logout{
     color: var(--blanco);
     font-size: 1.2rem;
@@ -50,3 +63,4 @@ footer{
     color: var(--blanco);
     margin-top: .3rem;
 }
+

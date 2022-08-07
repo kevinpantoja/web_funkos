@@ -1,6 +1,13 @@
 <?php
 	class controllerLoginUsuario
 	{
+
+		public function __construct()
+		{
+			if(!isset($_SESSION)){
+                session_start();
+            }
+		}
 		public function validarUsuario($login,$password)	
 		{
 			include_once('../model/modelUsuario.php');
@@ -18,6 +25,7 @@
 								$modelUsuario = new modelUsuario();
 								$rol = $modelUsuario->obtenerRol($login);
 								if($rol["rol"] == "cliente"){
+									$_SESSION['login']=$login;
 									include_once('../model/modelProductos.php');
 									$objProducto= new ModelProductos();
 									$lista = $objProducto -> listarProductos();
@@ -28,6 +36,7 @@
 									$obj=new FormProductos();
 									$obj->showFormProductos($lista, $tipos, $categorias, $series);	
 								}else{
+									$_SESSION['login']=$login;
 									include_once('../model/modeloUsuarioPrivilegio.php');
 									$objUsuarioPrivilegio = new UsuarioPrivilegio();
 									$listaPrivilegios = $objUsuarioPrivilegio -> obtenerPrivilegios($login);
@@ -59,5 +68,6 @@
 					$objformMensaje -> formMensajeShow("alert.png","no se encontro el usuario<br>intente nuevamente","<a href='../index.php'>ir al inicio </a>");	
 			}
 		}
+
 	}
 ?>

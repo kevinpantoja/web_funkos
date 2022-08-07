@@ -14,6 +14,7 @@ class FormProductos
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
             <link rel="stylesheet" href="../view/footerHeader.css">
             <link rel="stylesheet" href="../view/formProducto.css">
             <title>Producto</title>
@@ -82,24 +83,28 @@ class FormProductos
                         <?php for ($i = 0; $i < count($array); $i++) {
                         ?>
                             <div class="producto_individual">
-                                <form action="">
+                                <form action="../controller/getCarrito.php" method="POST">
                                     <div><img src="../img/<?php echo $array[$i]["imgProducto"]; ?>" alt=""></div>
-                                    <div>ID: <input type="text" value="<?php echo $array[$i]["idProducto"]; ?>" readonly></div>
+                                    <div>ID: <input type="text" name="producto_id" value="<?php echo $array[$i]["idProducto"]; ?>" readonly></div>
                                     <h2><?php echo $array[$i]["nombreProducto"]; ?></h2>
                                     <div>
                                         <span>S/. <?php echo $array[$i]["precioProducto"]; ?></span>
                                         <span> - Estado: <?php echo $array[$i]["stockProducto"] > 0 ? "disponible" : "agotado"; ?></span>
                                     </div>
-                                    <input type="submit" value="comprar">
+
+                                    <input type="number"  min="1" name="producto_cantidad" value="1" >
+                                    <input type="hidden" name="producto_nombre" value="<?php echo $array[$i]["nombreProducto"]; ?>">
+                                    <input type="hidden" name="producto_precio" value="<?php echo $array[$i]["precioProducto"]; ?>">
+                                    <input type="hidden" name="producto_image" value="<?php echo $array[$i]["imgProducto"]; ?>">
+                                    
+                                    <input type="submit" value="comprar" name="agregar_carrito">
                                 </form>
                             </div>
                         <?php
                         } ?>
                     </section>
                 </div>
-
             </div>
-
             <?php Footer::obtenerInstancia(); ?>
         </body>
 
