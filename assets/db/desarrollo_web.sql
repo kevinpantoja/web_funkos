@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 18, 2022 at 05:06 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 07-08-2022 a las 03:50:53
+-- Versión del servidor: 10.4.22-MariaDB
+-- Versión de PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `desarrollo_web`
+-- Base de datos: `desarrollo_web`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categoria_producto`
+-- Estructura de tabla para la tabla `carrito`
+--
+
+CREATE TABLE `carrito` (
+  `id_carrito` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `id_user` varchar(20) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `precio_prod` float NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `imagen` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categoria_producto`
 --
 
 CREATE TABLE `categoria_producto` (
@@ -34,7 +50,7 @@ CREATE TABLE `categoria_producto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `categoria_producto`
+-- Volcado de datos para la tabla `categoria_producto`
 --
 
 INSERT INTO `categoria_producto` (`idCategoria`, `nombreCategoria`, `descCategoria`) VALUES
@@ -50,7 +66,7 @@ INSERT INTO `categoria_producto` (`idCategoria`, `nombreCategoria`, `descCategor
 -- --------------------------------------------------------
 
 --
--- Table structure for table `privilegios`
+-- Estructura de tabla para la tabla `privilegios`
 --
 
 CREATE TABLE `privilegios` (
@@ -61,7 +77,7 @@ CREATE TABLE `privilegios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `privilegios`
+-- Volcado de datos para la tabla `privilegios`
 --
 
 INSERT INTO `privilegios` (`idPrivilegio`, `pathPrivilegio`, `labelPrivilegio`, `iconPrivilegio`) VALUES
@@ -74,7 +90,7 @@ INSERT INTO `privilegios` (`idPrivilegio`, `pathPrivilegio`, `labelPrivilegio`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `producto`
+-- Estructura de tabla para la tabla `producto`
 --
 
 CREATE TABLE `producto` (
@@ -91,7 +107,7 @@ CREATE TABLE `producto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `producto`
+-- Volcado de datos para la tabla `producto`
 --
 
 INSERT INTO `producto` (`idProducto`, `nombreProducto`, `precioProducto`, `stockProducto`, `tipoProducto`, `categoriaProducto`, `serieProducto`, `idProveedor`, `imgProducto`, `descripcionProducto`) VALUES
@@ -106,7 +122,7 @@ INSERT INTO `producto` (`idProducto`, `nombreProducto`, `precioProducto`, `stock
 -- --------------------------------------------------------
 
 --
--- Table structure for table `serie_producto`
+-- Estructura de tabla para la tabla `serie_producto`
 --
 
 CREATE TABLE `serie_producto` (
@@ -116,7 +132,7 @@ CREATE TABLE `serie_producto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `serie_producto`
+-- Volcado de datos para la tabla `serie_producto`
 --
 
 INSERT INTO `serie_producto` (`idSerie`, `nombreSerie`, `descSerie`) VALUES
@@ -134,7 +150,7 @@ INSERT INTO `serie_producto` (`idSerie`, `nombreSerie`, `descSerie`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipo_producto`
+-- Estructura de tabla para la tabla `tipo_producto`
 --
 
 CREATE TABLE `tipo_producto` (
@@ -144,7 +160,7 @@ CREATE TABLE `tipo_producto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tipo_producto`
+-- Volcado de datos para la tabla `tipo_producto`
 --
 
 INSERT INTO `tipo_producto` (`idTipo`, `nombreTipo`, `descTipo`) VALUES
@@ -160,7 +176,7 @@ INSERT INTO `tipo_producto` (`idTipo`, `nombreTipo`, `descTipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarioprivilegios`
+-- Estructura de tabla para la tabla `usuarioprivilegios`
 --
 
 CREATE TABLE `usuarioprivilegios` (
@@ -170,7 +186,7 @@ CREATE TABLE `usuarioprivilegios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `usuarioprivilegios`
+-- Volcado de datos para la tabla `usuarioprivilegios`
 --
 
 INSERT INTO `usuarioprivilegios` (`idUp`, `rol`, `idPrivilegio`) VALUES
@@ -185,7 +201,7 @@ INSERT INTO `usuarioprivilegios` (`idUp`, `rol`, `idPrivilegio`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -196,7 +212,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`login`, `password`, `estado`, `rol`) VALUES
@@ -204,23 +220,29 @@ INSERT INTO `usuarios` (`login`, `password`, `estado`, `rol`) VALUES
 ('usuario2', '7e58d63b60197ceb55a1c487989a3720', 1, 'administrador');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `categoria_producto`
+-- Indices de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD PRIMARY KEY (`id_carrito`);
+
+--
+-- Indices de la tabla `categoria_producto`
 --
 ALTER TABLE `categoria_producto`
   ADD PRIMARY KEY (`idCategoria`);
 
 --
--- Indexes for table `privilegios`
+-- Indices de la tabla `privilegios`
 --
 ALTER TABLE `privilegios`
   ADD PRIMARY KEY (`idPrivilegio`);
 
 --
--- Indexes for table `producto`
+-- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`idProducto`),
@@ -229,51 +251,57 @@ ALTER TABLE `producto`
   ADD KEY `producto_serie` (`serieProducto`);
 
 --
--- Indexes for table `serie_producto`
+-- Indices de la tabla `serie_producto`
 --
 ALTER TABLE `serie_producto`
   ADD PRIMARY KEY (`idSerie`);
 
 --
--- Indexes for table `tipo_producto`
+-- Indices de la tabla `tipo_producto`
 --
 ALTER TABLE `tipo_producto`
   ADD PRIMARY KEY (`idTipo`);
 
 --
--- Indexes for table `usuarioprivilegios`
+-- Indices de la tabla `usuarioprivilegios`
 --
 ALTER TABLE `usuarioprivilegios`
   ADD PRIMARY KEY (`idUp`);
 
 --
--- Indexes for table `usuarios`
+-- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`login`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `privilegios`
+-- AUTO_INCREMENT de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+
+--
+-- AUTO_INCREMENT de la tabla `privilegios`
 --
 ALTER TABLE `privilegios`
   MODIFY `idPrivilegio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `usuarioprivilegios`
+-- AUTO_INCREMENT de la tabla `usuarioprivilegios`
 --
 ALTER TABLE `usuarioprivilegios`
   MODIFY `idUp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `producto`
+-- Filtros para la tabla `producto`
 --
 ALTER TABLE `producto`
   ADD CONSTRAINT `producto_categoria` FOREIGN KEY (`categoriaProducto`) REFERENCES `categoria_producto` (`idCategoria`),
