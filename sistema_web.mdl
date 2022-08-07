@@ -9322,7 +9322,7 @@
 				supplier   	@356
 				vertices   	(list Points
 				    (1306, 1625)
-				    (1138, 1718))
+				    (1135, 1718))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$24" @369
 				Parent_View 	@367
@@ -9334,7 +9334,7 @@
 				supplier   	@363
 				vertices   	(list Points
 				    (1306, 1625)
-				    (1475, 1533))
+				    (1477, 1532))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$37" @370
 			location   	(1536, 1802)
@@ -9361,7 +9361,7 @@
 				supplier   	@357
 				vertices   	(list Points
 				    (1536, 1802)
-				    (1536, 1878))
+				    (1536, 1876))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$39" @372
 				Parent_View 	@370
@@ -9373,7 +9373,7 @@
 				supplier   	@363
 				vertices   	(list Points
 				    (1536, 1802)
-				    (1536, 1727))
+				    (1536, 1687))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$40" @373
 			location   	(1729, 1399)
@@ -9400,7 +9400,7 @@
 				supplier   	@358
 				vertices   	(list Points
 				    (1729, 1399)
-				    (1865, 1328))
+				    (2080, 1216))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$42" @375
 				Parent_View 	@373
@@ -9412,7 +9412,7 @@
 				supplier   	@363
 				vertices   	(list Points
 				    (1729, 1399)
-				    (1593, 1471))
+				    (1593, 1469))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$43" @376
 			location   	(1989, 1653)
@@ -9439,7 +9439,7 @@
 				supplier   	@359
 				vertices   	(list Points
 				    (1989, 1653)
-				    (2386, 1785))
+				    (2386, 1784))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$45" @378
 				Parent_View 	@376
@@ -9478,7 +9478,7 @@
 				supplier   	@360
 				vertices   	(list Points
 				    (1981, 1504)
-				    (2369, 1504))
+				    (2370, 1504))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$48" @381
 				Parent_View 	@379
@@ -9517,7 +9517,7 @@
 				supplier   	@361
 				vertices   	(list Points
 				    (1335, 1399)
-				    (1193, 1326))
+				    (1229, 1345))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$54" @384
 				Parent_View 	@382
@@ -9529,7 +9529,7 @@
 				supplier   	@363
 				vertices   	(list Points
 				    (1335, 1399)
-				    (1477, 1472))
+				    (1476, 1471))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$58" @385
 			location   	(1780, 1677)
@@ -9556,7 +9556,7 @@
 				supplier   	@362
 				vertices   	(list Points
 				    (1780, 1677)
-				    (1967, 1813))
+				    (1969, 1813))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$60" @387
 				Parent_View 	@385
@@ -9568,7 +9568,7 @@
 				supplier   	@363
 				vertices   	(list Points
 				    (1780, 1677)
-				    (1593, 1542))
+				    (1593, 1543))
 				line_style 	0)))
 		    (object UseCaseView "Use Case View::Casos de Uso::visualizar reportes" @388
 			location   	(2432, 624)
@@ -9693,7 +9693,7 @@
 				supplier   	@388
 				vertices   	(list Points
 				    (2432, 894)
-				    (2432, 829))
+				    (2432, 785))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$33" @394
 				Parent_View 	@392
@@ -9705,7 +9705,7 @@
 				supplier   	@391
 				vertices   	(list Points
 				    (2432, 894)
-				    (2432, 960))
+				    (2432, 959))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$34" @395
 			location   	(2571, 965)
@@ -9732,7 +9732,7 @@
 				supplier   	@389
 				vertices   	(list Points
 				    (2571, 965)
-				    (2654, 924))
+				    (2639, 929))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$36" @397
 				Parent_View 	@395
@@ -9771,7 +9771,7 @@
 				supplier   	@390
 				vertices   	(list Points
 				    (2645, 1138)
-				    (2801, 1210))
+				    (2802, 1210))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$69" @400
 				Parent_View 	@398
@@ -9783,7 +9783,7 @@
 				supplier   	@391
 				vertices   	(list Points
 				    (2645, 1138)
-				    (2489, 1066))
+				    (2489, 1064))
 				line_style 	0)))
 		    (object UseCaseView "Use Case View::Iniciar Sesión" @401
 			location   	(1216, 1040)
@@ -9917,7 +9917,7 @@
 				supplier   	@403
 				vertices   	(list Points
 				    (1400, 1040)
-				    (1476, 1040))
+				    (1475, 1040))
 				line_style 	0)))
 		    (object AssociationViewNew "$UNNAMED$70" @409
 			location   	(1536, 902)
@@ -9944,7 +9944,7 @@
 				supplier   	@402
 				vertices   	(list Points
 				    (1536, 902)
-				    (1536, 845))
+				    (1536, 801))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$72" @411
 				Parent_View 	@409
@@ -9956,7 +9956,7 @@
 				supplier   	@403
 				vertices   	(list Points
 				    (1536, 902)
-				    (1536, 960))
+				    (1536, 1040))
 				line_style 	0)))))))
     root_category 	(object Class_Category "Logical View"
 	quid       	"34DBB4830141"
@@ -10061,24 +10061,6 @@
 				line_color 	3342489
 				fill_color 	13434879
 				quidu      	"5BB99B0200AC"
-				compartment 	(object Compartment
-				    Parent_View 	@412
-				    location   	(927, 295)
-				    font       	(object Font
-					size       	9
-					face       	"Arial"
-					bold       	FALSE
-					italics    	FALSE
-					underline  	FALSE
-					strike     	FALSE
-					color      	0
-					default_color 	TRUE)
-				    icon_style 	"Icon"
-				    fill_color 	16777215
-				    anchor     	2
-				    nlines     	5
-				    max_width  	384
-				    justify    	1)
 				width      	404
 				height     	316
 				annotation 	8
@@ -10109,24 +10091,6 @@
 				line_color 	3342489
 				fill_color 	13434879
 				quidu      	"5BB99C1603B9"
-				compartment 	(object Compartment
-				    Parent_View 	@413
-				    location   	(1669, 319)
-				    font       	(object Font
-					size       	9
-					face       	"Arial"
-					bold       	FALSE
-					italics    	FALSE
-					underline  	FALSE
-					strike     	FALSE
-					color      	0
-					default_color 	TRUE)
-				    icon_style 	"Icon"
-				    fill_color 	16777215
-				    anchor     	2
-				    nlines     	4
-				    max_width  	531
-				    justify    	1)
 				width      	552
 				height     	268
 				annotation 	8
@@ -10157,24 +10121,6 @@
 				line_color 	3342489
 				fill_color 	13434879
 				quidu      	"5BB99D1302DE"
-				compartment 	(object Compartment
-				    Parent_View 	@414
-				    location   	(2599, 342)
-				    font       	(object Font
-					size       	9
-					face       	"Arial"
-					bold       	FALSE
-					italics    	FALSE
-					underline  	FALSE
-					strike     	FALSE
-					color      	0
-					default_color 	TRUE)
-				    icon_style 	"Icon"
-				    fill_color 	16777215
-				    anchor     	2
-				    nlines     	3
-				    max_width  	303
-				    justify    	1)
 				width      	324
 				height     	222
 				annotation 	8
