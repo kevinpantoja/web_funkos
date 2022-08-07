@@ -245,6 +245,30 @@ label{
 
 
 
+/*admin*/
+.titulo_principal{
+    margin-bottom: 2rem;
+}
+.botones_admin_form{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.botones_admin{
+    background: var(--blanco);
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    border: 3px solid var(--negro);
+    cursor: pointer;
+}
+.botones_admin:hover{
+    background: var(--negro);
+    color: var(--blanco);
+    border: 3px solid var(--blanco);
+}
+
+
+
 /*mensaje de error*/
 .mensaje__error{
     color: var(--blanco);

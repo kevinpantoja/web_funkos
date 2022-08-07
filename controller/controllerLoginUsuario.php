@@ -25,6 +25,9 @@
 									$categorias = $objProducto -> listarFiltros('categoria_producto');
 									$series = $objProducto -> listarFiltros('serie_producto');
 									include_once('../view/formProductos.php');
+									session_start();
+									$_SESSION["rol"] = "cliente";
+									$_SESSION["cuenta"] = $login;
 									$obj=new FormProductos();
 									$obj->showFormProductos($lista, $tipos, $categorias, $series);	
 								}else{
@@ -33,6 +36,9 @@
 									$listaPrivilegios = $objUsuarioPrivilegio -> obtenerPrivilegios($login);
 									
 									include_once('../view/formPrincipal.php');
+									session_start();
+									$_SESSION["rol"] = "admin";
+									$_SESSION["cuenta"] = $login;
 									$objFormPrincipal = new formPrincipal();
 									$objFormPrincipal -> formPrincipalShow($listaPrivilegios);	
 
