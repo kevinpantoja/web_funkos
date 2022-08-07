@@ -26,7 +26,7 @@
 									$series = $objProducto -> listarFiltros('serie_producto');
 									include_once('../view/formProductos.php');
 									$obj=new FormProductos();
-									$obj->showForm($lista, $tipos, $categorias, $series);	
+									$obj->showFormProductos($lista, $tipos, $categorias, $series);	
 								}else{
 									include_once('../model/modeloUsuarioPrivilegio.php');
 									$objUsuarioPrivilegio = new UsuarioPrivilegio();
