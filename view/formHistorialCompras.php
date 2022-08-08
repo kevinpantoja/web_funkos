@@ -16,35 +16,45 @@ class FormHistorialCompras
         </head>
 
         <body>
-            <h1 id="titulo" name="titulo" align="center">
-                <strong>Historial ordenes de compra</strong>
-            </h1>
-            <div class="contenedor_body">
-                <div class="orden_compra">
-                    <section class="contenedor_ordenes">
-                        <?php for ($i = 0; $i < count($arrOrdenesDeCompra); $i++) {
-                        ?>
-                            <div class="orden_compra_individual">
-                                <form class="formulario" id="miFormulario" name="form1" action="../controller/getOrdenCompra.php" method="POST">
-                                    <div>
-                                        ID: <input type="text" id="txtIdOrdenCompra" name="txtIdOrdenCompra" value="<?php echo $arrOrdenesDeCompra[$i]["idOrdenCompra"]; ?>" readonly>
-                                    </div>
-                                    <div>
-                                        Fecha de solicitud: <?php echo $arrOrdenesDeCompra[$i]["fechaDePedido"]; ?>
-                                    </div>
-                                    <div>
-                                        Estado: <?php echo $arrOrdenesDeCompra[$i]["estado"]; ?>
-                                    </div>
-                                    <div>
-                                        <input class="btnCancelar" autocomplete="off" type="submit" name="btnCancelar" id="btnCancelar" value="Cancelar">
-                                    </div>
-                                </form>
-                            </div>
-                        <?php
-                        } ?>
-                    </section>
+            <section class="contenedor">
+                <div class="contenedor__elementos">
+                    <h1 class="formulario_titulo input_texto" align="center">
+                        <strong>Historial de ordenes de compra</strong>
+                    </h1>
+                    <?php for ($i = 0; $i < count($arrOrdenesDeCompra); $i++) { ?>
+                        <div class="dividsor">
+                            <form class="formulario" id="miFormulario" name="form1" action="../controller/getOrdenCompra.php" method="POST">
+                                <div class="formulario_input _50">
+                                    <label class="formulario_label" for="nombres">ID</label>
+                                    <input class="input_text" type="text" id="txtIdOrdenCompra" name="txtIdOrdenCompra" value="<?php echo $arrOrdenesDeCompra[$i]["idOrdenCompra"]; ?>" readonly>
+                                </div>
+                                <div class="formulario_input _50">
+                                    <label class="formulario_label" for="nombres">Productos</label>
+                                    <input class="input_text" type="text" value="<?php echo $arrOrdenesDeCompra[$i]["productos"]; ?>" readonly>
+                                </div>
+                                <div class="formulario_input _50">
+                                    <label class="formulario_label" for="nombres">Estado</label>
+                                    <input class="input_text" type="text" value="<?php echo $arrOrdenesDeCompra[$i]["estado"]; ?>" readonly>
+                                </div>
+                                <div class="formulario_input _50">
+                                    <label class="formulario_label" for="nombres">Fecha de solicitud</label>
+                                    <input class="input_text" type="text" value="<?php echo $arrOrdenesDeCompra[$i]["fechaDePedido"]; ?>" readonly>
+                                </div>
+                                <div class="formulario_input _100">
+                                    <input class="boton_cancelar" autocomplete="off" type="submit" name="btnCancelar" id="btnCancelar" value="Cancelar">
+                                </div>
+                            </form>
+                        </div>
+                    <?php
+
+                    } ?>
+                    <form action="../index.php" method="POST">
+                        <div class="formulario_input _100">
+                            <input class="boton_enviar" autocomplete="off" type="submit" name="regresar" id="actualizar" value="Regresar">
+                        </div>
+                    </form>
                 </div>
-            </div>
+            </section>
 
         </body>
 

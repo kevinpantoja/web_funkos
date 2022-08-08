@@ -14,8 +14,9 @@ class ModelOrdenCompra
             while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
                 $item = [];
                 $item["idOrdenCompra"] = $row["idOrdenCompra"];
-                $item["fechaDePedido"] = $row["fechaDePedido"];
+                $item["productos"] = $row["productos"];
                 $item["estado"] = $row["estado"];
+                $item["fechaDePedido"] = $row["fechaDePedido"];
                 array_push($items, $item);
             }
 
