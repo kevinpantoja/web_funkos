@@ -32,7 +32,11 @@
                                         <label class="formulario_label" for="apaterno">Password</label>
                                         <input placeholder="Password" autocomplete="off"  class="input_text" name="txtPassword" type="password" id="apaterno">
                                     </div>
-                                    <div class="formulario_input _100">
+                                    <div class="formulario_input _50"> 
+                                        <label class="formulario_label_registro" for="registrar">¿No tienes cuenta?  <a name = "registrar" href="view/formRegistroUsuario.php">Regístrate</a></label>
+                                       
+                                    </div>
+                                    <div class="formulario_input _50">
                                         <input class="boton_enviar"autocomplete="off"  type="submit" name="bntAceptar" id="aceptar" value="Ingresar" >
                                     </div>
                                 </form>
@@ -43,7 +47,6 @@
             <?php	
 		}	
 	}
-
 ?>
 
 

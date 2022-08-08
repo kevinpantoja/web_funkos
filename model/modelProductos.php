@@ -1,13 +1,15 @@
-<?php 
+<?php
 include_once("../shared/conexionBD.php");
-class ModelProductos{
-     
-    function obtenerProductos(){
-        try{
+class ModelProductos
+{
+
+    function obtenerProductos()
+    {
+        try {
             $conexion = ConexionBD::obtenerInstancia()->conexion;
             $query = $conexion->query("SELECT * FROM producto");
             $items = [];
-            while($row = $query->fetch(PDO::FETCH_ASSOC)){
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
                 $item = [];
                 $item["idProducto"] = $row["idProducto"];
                 $item["nombreProducto"] = $row["nombreProducto"];
@@ -18,69 +20,69 @@ class ModelProductos{
                 $item["serieProducto"] = $row["serieProducto"];
                 $item["idProveedor"] = $row["idProveedor"];
                 $item["imgProducto"] = $row["imgProducto"];
-                array_push($items,$item);
+                array_push($items, $item);
             }
             return $items;
-        }catch(PDOException $e){
+        } catch (PDOException $e) {
             return false;
         }
     }
 
-    public function listarFiltros($tabla){
+    public function listarFiltros($tabla)
+    {
         $conexion = ConexionBD::obtenerInstancia()->conexion;
-        $resultado=$conexion->query('SELECT * FROM '.$tabla);
+        $resultado = $conexion->query('SELECT * FROM ' . $tabla);
         $total = [];
-        while($resultados=$resultado->fetch(PDO::FETCH_ASSOC)){
-            array_push($total,$resultados);		
+        while ($resultados = $resultado->fetch(PDO::FETCH_ASSOC)) {
+            array_push($total, $resultados);
         }
         return $total;
-    }	
+    }
 
-    public function listarProductosFiltrados($tipo, $categoria, $serie){
+    public function listarProductosFiltrados($tipo, $categoria, $serie)
+    {
         $conn = ConexionBD::obtenerInstancia()->conexion;
 
         $where = "";
-        if($tipo == 0 and $categoria == 0 and $serie == 0)
-        {
+        if ($tipo == 0 and $categoria == 0 and $serie == 0) {
             $where = "";
         } else
-        if($tipo == 0){
+        if ($tipo == 0) {
             if ($categoria == 0)
-                $where = "where serieProducto like '".$serie."'";
+                $where = "where serieProducto like '" . $serie . "'";
             else if ($serie == 0)
-                $where = "where categoriaProducto like '".$categoria."'";
+                $where = "where categoriaProducto like '" . $categoria . "'";
             else
-                $where = "where categoriaProducto like '".$categoria."' and serieProducto like '".$serie."'";
+                $where = "where categoriaProducto like '" . $categoria . "' and serieProducto like '" . $serie . "'";
         } else 
         
-        if ($categoria == 0){
+        if ($categoria == 0) {
             if ($tipo == 0)
-                $where = "where serieProducto like '".$serie."'";
+                $where = "where serieProducto like '" . $serie . "'";
             else if ($serie == 0)
-                $where = "where tipoProducto like '".$tipo."'";
+                $where = "where tipoProducto like '" . $tipo . "'";
             else
-                $where = "where tipoProducto like '".$tipo."' and serieProducto like '".$serie."'";
+                $where = "where tipoProducto like '" . $tipo . "' and serieProducto like '" . $serie . "'";
         } else 
         
-        if($serie == 0){
+        if ($serie == 0) {
             if ($tipo == 0)
-                $where = "where categoriaProducto like '".$categoria."'";
+                $where = "where categoriaProducto like '" . $categoria . "'";
             else if ($categoria == 0)
-                $where = "where tipoProducto like '".$tipo."'";
+                $where = "where tipoProducto like '" . $tipo . "'";
             else
-                $where = "where tipoProducto like '".$tipo."' and categoriaProducto like '".$categoria."'";
-        } else 
-        {
-            $where = "where tipoProducto like '".$tipo."' and categoriaProducto like '".$categoria."' and serieProducto like '".$serie."'";
+                $where = "where tipoProducto like '" . $tipo . "' and categoriaProducto like '" . $categoria . "'";
+        } else {
+            $where = "where tipoProducto like '" . $tipo . "' and categoriaProducto like '" . $categoria . "' and serieProducto like '" . $serie . "'";
         }
 
-        $resultado=$conn->query('
+        $resultado = $conn->query('
         SELECT P.*, T.nombreTipo FROM producto P
         INNER JOIN tipo_producto T
-        ON P.tipoProducto = T.idTipo '.$where);
+        ON P.tipoProducto = T.idTipo ' . $where);
         $total = [];
-        while($productos=$resultado->fetch(PDO::FETCH_ASSOC)){
-            array_push($total,$productos);		
+        while ($productos = $resultado->fetch(PDO::FETCH_ASSOC)) {
+            array_push($total, $productos);
         }
         return $total;
     }
@@ -88,31 +90,32 @@ class ModelProductos{
     public function listarProductos()
     {
         $conexion = ConexionBD::obtenerInstancia()->conexion;
-        $resultado=$conexion->query('
+        $resultado = $conexion->query('
         SELECT P.*, T.nombreTipo FROM producto P
         INNER JOIN tipo_producto T
         ON P.tipoProducto = T.idTipo');
         $total = [];
-        while($productos=$resultado->fetch(PDO::FETCH_ASSOC)){
-            array_push($total,$productos);		
+        while ($productos = $resultado->fetch(PDO::FETCH_ASSOC)) {
+            array_push($total, $productos);
         }
         return $total;
     }
 
-    function filtrarNombreProductos($array){
-        try{
+    function filtrarNombreProductos($array)
+    {
+        try {
             $filtro = "WHERE ";
-            for($i = 0; $i < count($array); $i++){
-                if($i == count($array) - 1){
-                    $filtro = $filtro . "nombreProducto REGEXP '.*".$array[$i].".*';";
-                }else{
-                    $filtro = $filtro . "nombreProducto REGEXP '.*".$array[$i].".*' OR ";
+            for ($i = 0; $i < count($array); $i++) {
+                if ($i == count($array) - 1) {
+                    $filtro = $filtro . "nombreProducto REGEXP '.*" . $array[$i] . ".*';";
+                } else {
+                    $filtro = $filtro . "nombreProducto REGEXP '.*" . $array[$i] . ".*' OR ";
                 }
             }
             $conexion = ConexionBD::obtenerInstancia()->conexion;
-            $query = $conexion->query("SELECT * FROM producto ".$filtro);
+            $query = $conexion->query("SELECT * FROM producto " . $filtro);
             $items = [];
-            while($row = $query->fetch(PDO::FETCH_ASSOC)){
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
                 $item = [];
                 $item["idProducto"] = $row["idProducto"];
                 $item["nombreProducto"] = $row["nombreProducto"];
@@ -123,14 +126,11 @@ class ModelProductos{
                 $item["serieProducto"] = $row["serieProducto"];
                 $item["idProveedor"] = $row["idProveedor"];
                 $item["imgProducto"] = $row["imgProducto"];
-                array_push($items,$item);
+                array_push($items, $item);
             }
             return $items;
-        }catch(PDOException $e){
+        } catch (PDOException $e) {
             return false;
         }
     }
 }
-
-
-?>
