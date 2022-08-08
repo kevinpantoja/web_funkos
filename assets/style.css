@@ -319,6 +319,32 @@ label{
 
 
 
+
+/**/
+.contenedor_imagen_proforma{
+    display: flex;
+    width: 500px;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+.proforma_compra{
+    overflow-x: auto;
+    overflow-y: auto;
+}
+.tabla_proforma{
+    background-color: var(--plomo_oscuro);
+    color: var(--blanco);
+}
+.tabla_proforma td,.tabla_proforma th{
+    border: 1px solid var(--blanco);
+    padding: .5rem;
+}
+.contenedor__proforma{
+    font-size: 17px;
+}
+
+
 /*mensaje de error*/
 .mensaje__error{
     color: var(--blanco);

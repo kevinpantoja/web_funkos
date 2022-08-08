@@ -67,7 +67,9 @@
                 ?>
                 <form method="POST" action="../controller/getCarrito.php">
                     <input type="submit" name="btnContinuarComprando" class="option-btn" value="Continuar comprando">
-                    <input type="submit" name="btnEfectuarPago" class="btn <?php echo ($total > 1) ? '' : 'disabled' ?>" value="Efectuar Pago">
+                </form>
+                <form action="../controller/getEfectuarCompra.php" method="POST">
+                    <input type="submit" name="btnCompra" class="btn <?php echo ($total > 1) ? '' : 'disabled' ?>" value="Efectuar Pago">
                 </form>
             </div>
         </div>

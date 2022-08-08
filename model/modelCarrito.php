@@ -14,6 +14,18 @@
 				return 0;
         }
 
+        public function datosCarro($id_user){
+            $conn=conexionBD::obtenerInstancia()->conexion;
+            $consulta = "SELECT id_producto,nombre,precio_prod,cantidad FROM carrito WHERE id_user = :idUser";
+            $query = $conn->prepare($consulta);
+            $query->execute(["idUser"=>$id_user]);
+            $datos = [];
+            while($row = $query->fetch(PDO::FETCH_ASSOC)){
+                array_push($datos,$row);
+            }
+            return $datos;
+        }
+
         public function agregarCarrito($id,$nombre,$precio,$cantidad,$image,$id_user){
             
             $conn=conexionBD::Obtenerinstancia()->conexion;
