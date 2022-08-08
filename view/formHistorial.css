@@ -40,7 +40,7 @@ html {
 
 .contenedor__elementos {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
     max-width: 1000px;
 }
 
@@ -413,4 +413,15 @@ label {
     .container-info__box .close {
         font-size: .5rem;
     }
+}
+
+
+
+.boton_enviar{
+    background-color: var(--plomo_oscuro);
+    color: var(--blanco);
+    font-size: 1.5rem;
+    padding: .5rem 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
 }

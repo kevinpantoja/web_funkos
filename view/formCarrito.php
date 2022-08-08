@@ -28,7 +28,10 @@
         $total=0;
         include_once("../model/modelCarrito.php");
         $obj=new modelCarrito();
-        $listaProductos=$obj->listarProductos();
+        if(!isset($_SESSION)){
+            session_start();
+        }   
+        $listaProductos=$obj->listarProductos($_SESSION["login"]);
 
         if($listaProductos>0){
             foreach($listaProductos as $producto){

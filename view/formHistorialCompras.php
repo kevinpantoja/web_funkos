@@ -21,6 +21,7 @@ class FormHistorialCompras
                     <h1 class="formulario_titulo input_texto" align="center">
                         <strong>Historial de ordenes de compra</strong>
                     </h1>
+                    <div class="contenedor_historial">
                     <?php for ($i = 0; $i < count($arrOrdenesDeCompra); $i++) { ?>
                         <div class="dividsor">
                             <form class="formulario" id="miFormulario" name="form1" action="../controller/getOrdenCompra.php" method="POST">
@@ -48,6 +49,8 @@ class FormHistorialCompras
                     <?php
 
                     } ?>
+                    </div>
+                    
                     <form action="../index.php" method="POST">
                         <div class="formulario_input _100">
                             <input class="boton_enviar" autocomplete="off" type="submit" name="regresar" id="actualizar" value="Regresar">

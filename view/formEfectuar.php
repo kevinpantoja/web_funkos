@@ -34,6 +34,7 @@ class FormEfectuar{
                                 </tr>
                                 <?php 
                                 for($i = 0; $i < sizeof($datos) ;$i++){
+                                    $cantidad = 0;
                                     ?>
                                 <tr>
                                     <td><?php echo  $i+1; ?></td>
@@ -43,6 +44,7 @@ class FormEfectuar{
                                     <td><?php echo  $datos[$i]["precio_prod"]*$datos[$i]["cantidad"]; ?></td>
                                 </tr>
                                     <?php
+                                    $cantidad = $cantidad + $datos[$i]["cantidad"];
                                 }
                                 ?>
                                 <tr>
@@ -53,7 +55,7 @@ class FormEfectuar{
                         </div>
                     </div>
                 
-                    <form class="formulario" name="" id="miFormulario" method="POST" action="../controller/getActualizarDatosPersonales.php" enctype="multipart/form-data">
+                    <form class="formulario" name="" id="miFormulario" method="POST" action="../controller/getMetodoPago.php" enctype="multipart/form-data">
                         <div class="mensaje__error">
                             
                         </div>
@@ -89,8 +91,10 @@ class FormEfectuar{
                         </div>
                         
                         <div class="formulario_input _100">
-                            <input class="boton_enviar" autocomplete="off"  type="submit" name="actualizar" id="actualizar" value="Comprar" >
+                            <input class="boton_enviar" autocomplete="off"  type="submit" name="btnPagar" id="actualizar" value="Comprar" >
                         </div>
+                        <input style="display:none" type="text" name="monto" value="<?php echo $total; ?>">
+                        <input style="display:none" type="text" name="nProd" value="<?php echo $cantidad; ?>">
 
                     </form>
                     <form action="../index.php" method="POST">

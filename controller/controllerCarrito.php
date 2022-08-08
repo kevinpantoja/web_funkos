@@ -16,11 +16,11 @@
             if(!empty($id) && !empty($nombre) && !empty($precio) && !empty($cantidad)){
                 include_once("../model/modelCarrito.php");
                 $obj=new modelCarrito();
-                $respuesta=$obj->verificarExiste($id);
+                if(!isset($_SESSION))
+                    session_start();
+                $respuesta=$obj->verificarExiste($id,$_SESSION["cuenta"]);
                 if($respuesta!=1){
                     $id_user=$_SESSION['login'];
-                    include_once("../model/modelCarrito.php");
-                    $obj=new modelCarrito();
                     $respuesta=$obj->agregarCarrito($id,$nombre,$precio,$cantidad,$image,$id_user);
                     if($respuesta==1){
                         $this->showProductos();
@@ -72,7 +72,9 @@
         public function eliminarProducto($id){
             include_once("../model/modelCarrito.php");
             $obj=new modelCarrito();
-            $respuesta=$obj->verificarExiste($id);
+            if(!isset($_SESSION))
+                session_start();
+            $respuesta=$obj->verificarExiste($id,$_SESSION["cuenta"]);
             if($respuesta==1){
                 $respuesta=$obj->eliminarProducto($id);
                 if($respuesta==1){

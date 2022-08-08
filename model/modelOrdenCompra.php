@@ -55,4 +55,17 @@ class ModelOrdenCompra
             return -1;
         }
     }
+
+    public function registrar($idCliente,$numProductos,$monto){
+        try {
+            $conexion = ConexionBD::obtenerInstancia()->conexion;
+            $fecha = date("d/m/Y");
+            $sql = "INSERT INTO orden_compra(fechaDePedido,estado,idCliente,productos,monto) values('$fecha','en almacen','$idCliente','$numProductos','$monto')";
+            $stmt = $conexion->prepare($sql);
+            $stmt->execute();
+            return $stmt->rowCount();
+        } catch (PDOException $e) {
+            return -1;
+        }
+    }
 }

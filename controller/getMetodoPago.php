@@ -1,17 +1,18 @@
 <?php
 
-if(isset($_POST['btnPagar'])){
-    $id=$_POST['txtId'];
+if(isset($_POST['monto'])){
+    $id=$_POST['cuenta'];
 
-    if(preg_match("/^[0-9]*$/",$id)){
-        $pass=$_POST['txtPassword'];
-        if(preg_match("/^[A-Za-z0-9]*$/",$pass)){
-            $propietario=$_POST['txtPropietario'];
-            $monto=$_POST['txtMonto'];    
+    if(preg_match("/^[0-9]{12}$/",$id)){
+        $pass=$_POST['clave'];
+        if(preg_match("/^[0-9]{6}$/",$pass)){
+            $propietario=$_POST['nombre']." ".$_POST["apaterno"]." ".$_POST["amaterno"];
+            $monto=$_POST['monto']; 
+            $nProd = $_POST["nProd"];   
             if(!empty($propietario)&&!empty($monto)){
                 include_once("./controllerMetodoPago.php");
                 $obj=new controllerMetodoPago();
-                $obj->realizarPago($id,$pass,$propietario,$monto);
+                $obj->realizarPago($id,$pass,$propietario,$nProd,$monto);
             }
         }else{
             echo "no2";

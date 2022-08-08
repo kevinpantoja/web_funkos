@@ -2,9 +2,9 @@
     include_once("../shared/conexionBD.php");
     class modelCarrito{
 
-        public function verificarExiste($id){
+        public function verificarExiste($id,$id_user){
             $conn=conexionBD::obtenerInstancia()->conexion;
-            $consulta="SELECT id_producto FROM carrito WHERE id_producto='$id'";
+            $consulta="SELECT id_producto FROM carrito WHERE id_producto='$id' and id_user = '$id_user'";
             $resultado = $conn->prepare($consulta);
             $resultado->execute();
 			$cantidadRegistros = $resultado->rowCount();						
@@ -83,9 +83,9 @@
             return 0;
         }
 
-        public function listarProductos(){
+        public function listarProductos($id_user){
             $conn=conexionBD::obtenerInstancia()->conexion;
-            $consulta="SELECT * FROM carrito";
+            $consulta="SELECT * FROM carrito Where id_user = '$id_user'";
             $resultado=$conn->prepare($consulta);
             $resultado->execute();
             if($resultado->rowCount()>0){
