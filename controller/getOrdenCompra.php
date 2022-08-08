@@ -1,6 +1,15 @@
 <?php
+session_start();
 
-if (isset($_POST['btnCancelar'])) {
+if (isset($_POST['btnHistorial'])) {
+    include_once("view/formHistorialCompras.php");
+    include_once("model/modelOrdenCompra.php");
+
+    $arr = (new ModelOrdenCompra())->listarOrdenesDeCompra($idCliente);
+
+    $obj = new FormHistorialCompras();
+    $obj->showFormHistorialCompras($arr);
+} else if (isset($_POST['btnCancelar'])) {
     $idOrdenCompra = $_POST['txtIdOrdenCompra'];
 
     include_once('controllerOrdenCompra.php');
