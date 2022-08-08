@@ -1,8 +1,4 @@
 <?php
-
-include_once("shared/header.php");
-include_once("shared/footer.php");
-
 class FormHistorialCompras
 {
     public function showFormHistorialCompras($arrOrdenesDeCompra)
@@ -15,40 +11,51 @@ class FormHistorialCompras
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="../view/footerHeader.css">
             <title>Historial de compras</title>
+            <link rel="stylesheet" href="../view/formHistorial.css">
         </head>
 
         <body>
-            <?php Header::obtenerInstancia(); ?>
-            <div class="contenedor_body">
-                <div class="orden_compra">
-                    <h>Historial ordenes de compra</h1>
-                        <section class="contenedor_ordenes">
-                            <?php for ($i = 0; $i < count($arrOrdenesDeCompra); $i++) {
-                            ?>
-                                <div class="orden_compra_individual">
-                                    <form class="formulario" id="miFormulario" name="form1" action="controller/getOrdenCompra.php" method="POST">
-                                        <div>
-                                            ID: <input type="text" id="txtIdOrdenCompra" name="txtIdOrdenCompra" value="<?php echo $arrOrdenesDeCompra[$i]["idOrdenCompra"]; ?>" readonly>
-                                        </div>
-                                        <div>
-                                            Fecha de solicitud: <?php echo $arrOrdenesDeCompra[$i]["fechaDePedido"]; ?>
-                                        </div>
-                                        <div>
-                                            Estado: <?php echo $arrOrdenesDeCompra[$i]["estado"]; ?>
-                                        </div>
-                                        <div>
-                                            <input class="btnCancelar" autocomplete="off" type="submit" name="btnCancelar" id="btnCancelar" value="Cancelar">
-                                        </div>
-                                    </form>
+            <section class="contenedor">
+                <div class="contenedor__elementos">
+                    <h1 class="formulario_titulo input_texto" align="center">
+                        <strong>Historial de ordenes de compra</strong>
+                    </h1>
+                    <?php for ($i = 0; $i < count($arrOrdenesDeCompra); $i++) { ?>
+                        <div class="dividsor">
+                            <form class="formulario" id="miFormulario" name="form1" action="../controller/getOrdenCompra.php" method="POST">
+                                <div class="formulario_input _50">
+                                    <label class="formulario_label" for="nombres">ID</label>
+                                    <input class="input_text" type="text" id="txtIdOrdenCompra" name="txtIdOrdenCompra" value="<?php echo $arrOrdenesDeCompra[$i]["idOrdenCompra"]; ?>" readonly>
                                 </div>
-                            <?php
-                            } ?>
-                        </section>
+                                <div class="formulario_input _50">
+                                    <label class="formulario_label" for="nombres">Productos</label>
+                                    <input class="input_text" type="text" value="<?php echo $arrOrdenesDeCompra[$i]["productos"]; ?>" readonly>
+                                </div>
+                                <div class="formulario_input _50">
+                                    <label class="formulario_label" for="nombres">Estado</label>
+                                    <input class="input_text" type="text" value="<?php echo $arrOrdenesDeCompra[$i]["estado"]; ?>" readonly>
+                                </div>
+                                <div class="formulario_input _50">
+                                    <label class="formulario_label" for="nombres">Fecha de solicitud</label>
+                                    <input class="input_text" type="text" value="<?php echo $arrOrdenesDeCompra[$i]["fechaDePedido"]; ?>" readonly>
+                                </div>
+                                <div class="formulario_input _100">
+                                    <input class="boton_cancelar" autocomplete="off" type="submit" name="btnCancelar" id="btnCancelar" value="Cancelar">
+                                </div>
+                            </form>
+                        </div>
+                    <?php
+
+                    } ?>
+                    <form action="../index.php" method="POST">
+                        <div class="formulario_input _100">
+                            <input class="boton_enviar" autocomplete="off" type="submit" name="regresar" id="actualizar" value="Regresar">
+                        </div>
+                    </form>
                 </div>
-            </div>
-            <?php Footer::obtenerInstancia(); ?>
+            </section>
+
         </body>
 
         </html>
