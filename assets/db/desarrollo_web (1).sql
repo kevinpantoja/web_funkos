@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2022 at 05:06 AM
+-- Generation Time: Aug 08, 2022 at 03:58 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Database: `desarrollo_web`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carrito`
+--
+
+CREATE TABLE `carrito` (
+  `id_carrito` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `id_user` varchar(50) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `precio_prod` float NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `imagen` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -50,6 +66,44 @@ INSERT INTO `categoria_producto` (`idCategoria`, `nombreCategoria`, `descCategor
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `estadopedido`
+--
+
+CREATE TABLE `estadopedido` (
+  `idPedido` varchar(20) NOT NULL,
+  `estado` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orden_compra`
+--
+
+CREATE TABLE `orden_compra` (
+  `idOrdenCompra` varchar(10) NOT NULL,
+  `fechaDePedido` varchar(10) NOT NULL,
+  `estado` varchar(20) NOT NULL,
+  `idCliente` varchar(20) DEFAULT NULL,
+  `productos` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orden_compra`
+--
+
+INSERT INTO `orden_compra` (`idOrdenCompra`, `fechaDePedido`, `estado`, `idCliente`, `productos`) VALUES
+('a1', '10/05/2022', 'entregado', 'christopher', '12'),
+('a2', '11/07/2022', 'entregado', 'juan', '13'),
+('a3', '07/08/2022', 'en almacen', 'juan', '14'),
+('a4', '01/08/2022', 'en proceso de entreg', 'juan', '15'),
+('a5', '02/07/2022', 'en proceso de entreg', 'christopher', '16'),
+('a6', '05/08/2022', 'en almacen', 'christopher', '17'),
+('a7', '05/08/2022', 'entregado', 'diego', '18');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `privilegios`
 --
 
@@ -69,7 +123,8 @@ INSERT INTO `privilegios` (`idPrivilegio`, `pathPrivilegio`, `labelPrivilegio`, 
 (2, '../view/EmitirProforma.php', 'emitir proforma', 'proforma.png'),
 (3, '../view/EditarUsuario.php', 'editar usuario', 'edituser.png'),
 (4, '../view/productos.php', 'ver lista de productos', 'Info.png'),
-(5, '../view/comprar.php', 'comprar productos', 'Info.png');
+(5, '../view/comprar.php', 'comprar productos', 'Info.png'),
+(6, '../view/formMantenerInfoProveedor.php', 'mantener información de proveedor', 'edituser.png');
 
 -- --------------------------------------------------------
 
@@ -102,6 +157,27 @@ INSERT INTO `producto` (`idProducto`, `nombreProducto`, `precioProducto`, `stock
 (10003, 'SURFER BOY PIZZA TEE - STRANGER THINGS', 20, 30, 1, 1, 103, 1, 'ropa1.png', '¡Una entrega especial bien caliente está en orden! Súbete a la ola de la cuarta temporada de Stranger Things con esta camiseta Surfer Boy Pizza Funko Tee. En la parte delantera de esta cómoda camiseta de color margarita, encontrarás la versión Pop! del logotipo del Chico Surfista Pizza, que muestra a un surfista cogiendo una ola sobre una porción de pizza. Esta camiseta de manga corta y cuello redondo es perfecta para descubrir misterios sobrenaturales, o para llevarla a diario.'),
 (10004, 'EVIL QUEEN ON THRONE - DISNEY VILLAINS', 30, 50, 5, 5, 101, 1, 'villains_evilQueenOnThrone.png', 'La reina Grimhilde ha escuchado la noticia de que Blancanieves es la más bella de tu colección Disney y sus celos la han llevado a formular un siniestro plan. ¡Añade la Reina Malvada Pop! La Reina Malvada en el Trono a tu colección Disney para completar tu set de Villanos. La figura de vinilo mide aproximadamente 5 pulgadas de alto'),
 (10005, 'EAGLY - PEACEMAKER', 12, 50, 2, 4, 104, 1, 'eagly_peacemaker.png', '¡Toma a Pop! Eagly para ampliar tu colección de DC Peacemaker. ¡Pop! Eagly, con una bandera americana en su garra, es la fiel y querida mascota de Peacemaker. ¡Ten a este fiel compañero cerca para completar tu colección de DC Pop! TV Series. El muñeco de vinilo mide 7,5 cm de alto.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `proveedor`
+--
+
+CREATE TABLE `proveedor` (
+  `ruc` varchar(12) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `telefono` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `proveedor`
+--
+
+INSERT INTO `proveedor` (`ruc`, `nombre`, `correo`, `telefono`) VALUES
+('12345678901', 'empresaSAC', 'empresa1@gmail.com', 123456789),
+('12345678902', 'nuevaEmpresaSAC', 'empresa2@gmail.com', 111222333);
 
 -- --------------------------------------------------------
 
@@ -180,7 +256,8 @@ INSERT INTO `usuarioprivilegios` (`idUp`, `rol`, `idPrivilegio`) VALUES
 (9, 'administrador', 4),
 (10, 'administrador', 5),
 (11, 'cliente', 4),
-(12, 'cliente', 5);
+(12, 'cliente', 5),
+(13, 'administrador', 6);
 
 -- --------------------------------------------------------
 
@@ -192,16 +269,29 @@ CREATE TABLE `usuarios` (
   `login` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `estado` int(11) NOT NULL,
-  `rol` varchar(100) NOT NULL DEFAULT 'cliente'
+  `rol` varchar(100) NOT NULL DEFAULT 'cliente',
+  `nombre` varchar(50) NOT NULL,
+  `aPaterno` varchar(50) NOT NULL,
+  `aMaterno` varchar(50) NOT NULL,
+  `genero` varchar(20) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `telefono` varchar(9) NOT NULL,
+  `direccion` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`login`, `password`, `estado`, `rol`) VALUES
-('usuario1', '24c9e15e52afc47c225b757e7bee1f9d', 1, 'cliente'),
-('usuario2', '7e58d63b60197ceb55a1c487989a3720', 1, 'administrador');
+INSERT INTO `usuarios` (`login`, `password`, `estado`, `rol`, `nombre`, `aPaterno`, `aMaterno`, `genero`, `email`, `telefono`, `direccion`) VALUES
+('chris123', '6b34fe24ac2ff8103f6fce1f0da2ef57', 1, 'cliente', 'Christopher', 'Ramos', 'Cosinga', 'femenino', 'chriss@gmail.com', '923165123', 'avenida peru lote 52'),
+('christopher', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'cliente', 'Christopher', 'Ramos', 'Cosinga', 'femenino', 'chris@gmail.com', '926631261', 'las lomas'),
+('chris_ramos', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'cliente', 'Christopher', 'Ramos', 'Cosinga', 'masculino', 'christopher@gmail.com', ' 92663126', ' avenida peru lote 52'),
+('diego', '078c007bd92ddec308ae2f5115c1775d', 1, 'cliente', 'Diego', 'Tinoco', 'Galarza', 'femenino', 'diego@gmail.comm', '923135121', 'las lomas'),
+('estefano', 'f20267a36bd8399c676061f2296d90ef', 1, 'cliente', 'Estefano', 'Carbajal', 'Munoz', 'masculino', 'estefano@gmail.com', '912312323', 'chosica lote 100'),
+('juan', 'a94652aa97c7211ba8954dd15a3cf838', 1, 'cliente', 'Juan', 'Castillo', 'Bartolo', 'masculino', 'juan@gmail.com', '912569234', 'miraflores'),
+('usuario1', '24c9e15e52afc47c225b757e7bee1f9d', 1, 'cliente', '', '', '', '', 'usuario1@gmail.com', '', ''),
+('usuario2', '7e58d63b60197ceb55a1c487989a3720', 1, 'administrador', '', '', '', '', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -212,6 +302,18 @@ INSERT INTO `usuarios` (`login`, `password`, `estado`, `rol`) VALUES
 --
 ALTER TABLE `categoria_producto`
   ADD PRIMARY KEY (`idCategoria`);
+
+--
+-- Indexes for table `estadopedido`
+--
+ALTER TABLE `estadopedido`
+  ADD PRIMARY KEY (`idPedido`);
+
+--
+-- Indexes for table `orden_compra`
+--
+ALTER TABLE `orden_compra`
+  ADD PRIMARY KEY (`idOrdenCompra`);
 
 --
 -- Indexes for table `privilegios`
@@ -227,6 +329,12 @@ ALTER TABLE `producto`
   ADD KEY `producto_tipo` (`tipoProducto`),
   ADD KEY `producto_categoria` (`categoriaProducto`),
   ADD KEY `producto_serie` (`serieProducto`);
+
+--
+-- Indexes for table `proveedor`
+--
+ALTER TABLE `proveedor`
+  ADD PRIMARY KEY (`ruc`);
 
 --
 -- Indexes for table `serie_producto`
@@ -247,12 +355,6 @@ ALTER TABLE `usuarioprivilegios`
   ADD PRIMARY KEY (`idUp`);
 
 --
--- Indexes for table `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`login`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -266,7 +368,7 @@ ALTER TABLE `privilegios`
 -- AUTO_INCREMENT for table `usuarioprivilegios`
 --
 ALTER TABLE `usuarioprivilegios`
-  MODIFY `idUp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idUp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
