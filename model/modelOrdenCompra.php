@@ -1,12 +1,10 @@
 <?php
-//include_once("../shared/conexionBD.php");
+include_once("../shared/conexionBD.php");
 
 class ModelOrdenCompra
 {
     public function listarOrdenesDeCompra($idCliente)
     {
-        include_once("shared/conexionBD.php");
-
         try {
             $conexion = ConexionBD::obtenerInstancia()->conexion;
             $sql = "SELECT * FROM orden_compra WHERE idCliente = '{$idCliente}'";

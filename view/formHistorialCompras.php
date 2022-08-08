@@ -1,8 +1,4 @@
 <?php
-
-include_once("shared/header.php");
-include_once("shared/footer.php");
-
 class FormHistorialCompras
 {
     public function showFormHistorialCompras($arrOrdenesDeCompra)
@@ -20,7 +16,7 @@ class FormHistorialCompras
         </head>
 
         <body>
-            <h1 id="titulo" name="titulo">
+            <h1 id="titulo" name="titulo" align="center">
                 <strong>Historial ordenes de compra</strong>
             </h1>
             <div class="contenedor_body">
@@ -29,7 +25,7 @@ class FormHistorialCompras
                         <?php for ($i = 0; $i < count($arrOrdenesDeCompra); $i++) {
                         ?>
                             <div class="orden_compra_individual">
-                                <form class="formulario" id="miFormulario" name="form1" action="controller/getOrdenCompra.php" method="POST">
+                                <form class="formulario" id="miFormulario" name="form1" action="../controller/getOrdenCompra.php" method="POST">
                                     <div>
                                         ID: <input type="text" id="txtIdOrdenCompra" name="txtIdOrdenCompra" value="<?php echo $arrOrdenesDeCompra[$i]["idOrdenCompra"]; ?>" readonly>
                                     </div>
