@@ -15,7 +15,7 @@ class Header{
             </ul>
 
             <ul>
-                <li><a class="header_direccion" href="">Productos</a></li>
+                <li><a class="header_direccion" href="../index.php">Productos</a></li>
                 <li><a class="header_direccion" href="../controller/getOrdenCompra.php">Historial</a></li>
                 <li><a class="header_direccion" href="../controller/getDatosPersonales.php">Datos Personales</a></li>
                 <li><a class="header_direccion" href=""></a></li>

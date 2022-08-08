@@ -68,6 +68,12 @@
                 </div>
 
             </form>
+            <form action="../index.php" method="POST">
+                <div class="formulario_input _100">
+                    <input class="boton_enviar" autocomplete="off"  type="submit" name="regresar" id="actualizar" value="Regresar" >
+                </div>    
+            </form>
+            
             <script src="../assets/script.js"></script>
         </div>
     </section>      
