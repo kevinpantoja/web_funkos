@@ -8,5 +8,4 @@
         include_once('../view/formProductos.php');
         $obj=new FormProductos();
         $obj->showFormProductos($lista, $tipos, $categorias, $series);
-        echo "aver";
 ?>

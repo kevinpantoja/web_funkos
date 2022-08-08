@@ -266,6 +266,32 @@ label{
     color: var(--blanco);
     border: 3px solid var(--blanco);
 }
+.proveedor_insertar_form{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--blanco);
+    padding: 1rem 2rem;
+}
+.proveedor_insertar_form label{
+    font-weight: bold;
+}
+.proveedor_insertar_form input{
+    background-color: var(--plomo_oscuro);
+    color: var(--blanco);
+    line-height: 1.5rem;
+    padding: .2rem .5rem;
+    border-radius: 10px;
+}
+.proveedor_form{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.proveedor_form1{
+    display:flex;
+    flex-direction:column;
+}
 
 
 
