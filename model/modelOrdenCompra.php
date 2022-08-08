@@ -1,5 +1,5 @@
 <?php
-include_once("../shared/conexionBD.php");
+//include_once("../shared/conexionBD.php");
 
 class ModelOrdenCompra
 {
