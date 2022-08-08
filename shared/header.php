@@ -24,10 +24,9 @@ class Header{
             <ul>
                 <li><a href=""><img class="header_icono" src="../img/user_logo.png" alt=""></a></li>
                 <li><a href="../view/formCarrito.php"><img class="header_icono carrito" src="../img/carrito_logo.png" alt=""><span class="number_carrito"><?php echo $cantidadproductos?$cantidadproductos:'0' ?></span></a></li>
-                <li><a class="header_logout" href="../shared/cerrarSesion.php">Log Out</a></li>
-                <!-- <form class="form_logout" action="../controller/logout.php" method="POST">
+                <form class="form_logout" action="../controller/logout.php" method="POST">
                     <li><a class="header_logout" href="">Log Out</a></li>
-                </form> -->
+                </form>
             </ul>     
         </div>
         <script>
