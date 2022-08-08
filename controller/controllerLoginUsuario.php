@@ -34,7 +34,6 @@
 									include_once('../model/modeloUsuarioPrivilegio.php');
 									$objUsuarioPrivilegio = new UsuarioPrivilegio();
 									$listaPrivilegios = $objUsuarioPrivilegio -> obtenerPrivilegios($login);
-									
 									include_once('../view/formPrincipal.php');
 									session_start();
 									$_SESSION["rol"] = "admin";

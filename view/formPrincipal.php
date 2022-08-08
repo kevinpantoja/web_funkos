@@ -1,4 +1,15 @@
 <?php
+
+if(isset($_POST["btnPrincipal"])){
+    $form = new formPrincipal();
+    include_once('../model/modeloUsuarioPrivilegio.php');
+    $objUsuarioPrivilegio = new UsuarioPrivilegio();
+    session_start();
+    $listaPrivilegios = $objUsuarioPrivilegio -> obtenerPrivilegios($_SESSION["cuenta"]);
+    $form->formPrincipalShow($listaPrivilegios);
+}else{
+    
+}
 	class formPrincipal
 	{
 		public function formPrincipalShow($listaPrivilegios)
@@ -22,17 +33,17 @@
                         for($i = 0; $i < $maximo; $i++)
                         {
                             ?>
-                            <form class="botones_admin_form" name="fom1" method="post" action="<?php echo $listaPrivilegios[$i]['pathPrivilegio']?>">
+                            <form class="botones_admin_form" name="fom1" method="POST" action="<?php echo $listaPrivilegios[$i]['pathPrivilegio']?>">
                                 <img src="../assets/imgenes/<?php echo $listaPrivilegios[$i]['iconPrivilegio']?>" width="25" height="25">
-                                <input type="submit" class="botones_admin" name="bntProceso" value="<?php echo $listaPrivilegios[$i]['labelPrivilegio']?>" >
+                                <input type="submit" class="botones_admin" name="btnProceso" value="<?php echo $listaPrivilegios[$i]['labelPrivilegio']?>" >
                             </form>
                             <br>
                             <?php	
                         }	
                         			
                     ?>
-                    <form class="botones_admin_form" name="fom1" method="post" action="../controller/logout.php" method="POST">
-                        <input type="submit" class="botones_admin" name="bntProceso" value="Salir" >
+                    <form class="botones_admin_form" name="fom1" method="POST" action="../controller/logout.php" method="POST">
+                        <input type="submit" class="botones_admin" name="btnProceso" value="Salir" >
                     </form>
                     <br>
                     </section>
