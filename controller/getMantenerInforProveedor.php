@@ -1,25 +1,7 @@
 <?php 
 
-if(isset($_POST["btnProveedor"])){
-    $registrar = new GetMantenerInforProveedor();
-    $ruc = $_POST["ruc"];
-    $nombre = $_POST["nombre"];
-    $correo = $_POST["correo"];
-    $telefono = $_POST["telefono"];
-    $validacionCampos = $registrar->validarCampos($ruc,$nombre,$correo,$telefono);
-    if($validacionCampos){
-
-    }else{
-        include_once('../shared/formMensaje.php');
-        $objformMensaje = new formMensaje;
-        $objformMensaje->formMensajeShow("error.png", "Error, formato inválido de los datos enviados.", "<a href='../index.php'>Regresar</a>");
-    }
-
-}else{
-    include_once('../shared/formMensaje.php');
-    $objformMensaje = new formMensaje;
-    $objformMensaje->formMensajeShow("error.png", "Error, se ha detectado un acceso no permitido.", "<a href='../index.php'>Ir al inicio</a>");
-}
+$registrar = new GetMantenerInforProveedor();
+$registrar->inicio();
 
 class GetMantenerInforProveedor{
     function validarCampos($ruc,$nombre,$correo,$telefono){
@@ -30,6 +12,40 @@ class GetMantenerInforProveedor{
             return true;
         }else{
             return false;
+        }
+    }
+
+    function inicio(){
+        if(isset($_POST["btnProveedor"])){
+            $registrar = new GetMantenerInforProveedor();
+            $ruc = $_POST["ruc"];
+            $nombre = $_POST["nombre"];
+            $correo = $_POST["correo"];
+            $telefono = $_POST["telefono"];
+            $validacionCampos = $registrar->validarCampos($ruc,$nombre,$correo,$telefono);
+            if($validacionCampos){
+                include("./controllerMantenerInforProveedor.php");
+                $modelProv = new controllerMantenerInforProveedor();
+                $modelProv->registrarProveedor($ruc,$nombre,$correo,$telefono);
+                if($modelProv){
+                    include_once('../shared/formMensaje.php');
+                    $objformMensaje = new formMensaje;
+                    $objformMensaje->formMensajeShow("check.png", "Proveedor registrado correctamente.", "<a href='../index.php'>Aceptar</a>");
+                }else{
+                    include_once('../shared/formMensaje.php');
+                    $objformMensaje = new formMensaje;
+                    $objformMensaje->formMensajeShow("error.png", "Error, ocurrio un error, inténtelo nuevamente", "<a href='../index.php'>Regresar</a>");
+                }
+            }else{
+                include_once('../shared/formMensaje.php');
+                $objformMensaje = new formMensaje;
+                $objformMensaje->formMensajeShow("error.png", "Error, formato inválido de los datos enviados.", "<a href='../index.php'>Regresar</a>");
+            }
+        
+        }else{
+            include_once('../shared/formMensaje.php');
+            $objformMensaje = new formMensaje;
+            $objformMensaje->formMensajeShow("error.png", "Error, se ha detectado un acceso no permitido.", "<a href='../index.php'>Ir al inicio</a>");
         }
     }
 }
