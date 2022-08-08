@@ -42,6 +42,19 @@ html{
     align-items: center;
     border: 4px solid black;
 }
+.contenedor__tarjeta{
+    background-color: black;
+    background-size: cover;
+    filter: brightness(100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid black;
+}
+.contenedor__tarjeta >img{
+    border-radius: 20px;
+    height: 300px;
+}
 .contenedor__banner > img{
     height: 300px;
 }
