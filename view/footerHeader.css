@@ -37,6 +37,9 @@ html{
     height: 50px;
     padding: 3px;
 }
+.header_direccion{
+    font-size: 1.5rem;
+}
 .header_direccion,.header_logout{
     color: var(--blanco);
     font-size: 1.2rem;
@@ -49,4 +52,22 @@ footer{
     font-size: 1.5rem;
     color: var(--blanco);
     margin-top: .3rem;
+}
+
+
+.number_carrito{
+    background-color: white;
+    color: black;
+    font-size: 1.5rem;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    padding: 5px;
+}
+.header_icono .carrito{
+    display: flex;
+    position: absolute;   
+}
+.header_direccion{
+    font-size: 1.5rem;
 }
