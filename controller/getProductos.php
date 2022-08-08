@@ -4,8 +4,14 @@ include_once("controllerProductos.php");
 if(isset($_POST["buscar"])){
 
     $buscado = $_POST["buscador"];
-    $controlProductos = new ControllerProductos();
-    $controlProductos->buscarProductosPorNombre($buscado);
+    if(!preg_match("/^\s*$/",$buscado)){
+        $controlProductos = new ControllerProductos();
+        $controlProductos->buscarProductosPorNombre($buscado);
+    }else{
+        include("../shared/formMensaje.php");
+        $formMensaje = new FormMensaje();
+        $formMensaje->FormMensajeShow("error.png","Error: rellene el campo, buscador vacío","<a href='../controller/getProductos.php'>Regresar</a>");
+    }
 }else{
     if(isset($_POST["filtrar"])){
         $tipo = $_POST['tipo_producto'];
