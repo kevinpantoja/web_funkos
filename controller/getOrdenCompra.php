@@ -16,7 +16,6 @@ if (isset($_SESSION["cuenta"])) {
         include_once("../view/formHistorialCompras.php");
         include_once("../model/modelOrdenCompra.php");
 
-        echo $_SESSION["cuenta"];
         $arr = (new ModelOrdenCompra())->listarOrdenesDeCompra($_SESSION["cuenta"]);
 
         $obj = new FormHistorialCompras();
