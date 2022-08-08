@@ -5,7 +5,7 @@
 
 class FormHistorialCompras
 {
-    public function showFormHistorialCompras($arrayOrdenesCompra)
+    public function showFormHistorialCompras($arrOrdenesDeCompra)
     {
 ?>
         <!DOCTYPE html>
@@ -24,18 +24,18 @@ class FormHistorialCompras
                 <div class="orden_compra">
                     <h1>Historial ordenes de compra</h1>
                     <section class="contenedor_ordenes">
-                        <?php for ($i = 0; $i < count($arrayOrdenesCompra); $i++) {
+                        <?php for ($i = 0; $i < count($arrOrdenesDeCompra); $i++) {
                         ?>
                             <div class="orden_compra_individual">
                                 <form class="formulario" id="miFormulario" name="form1" action="controller/getOrdenCompra.php" method="POST">
                                     <div>
-                                        ID: <input type="text" id="txtIdOrdenCompra" name="txtIdOrdenCompra" value="<?php echo $arrayOrdenesCompra[$i]["idOrdenCompra"]; ?>" readonly>
+                                        ID: <input type="text" id="txtIdOrdenCompra" name="txtIdOrdenCompra" value="<?php echo $arrOrdenesDeCompra[$i]["idOrdenCompra"]; ?>" readonly>
                                     </div>
                                     <div>
-                                        Fecha de solicitud: <?php echo $arrayOrdenesCompra[$i]["fechaDePedido"]; ?>
+                                        Fecha de solicitud: <?php echo $arrOrdenesDeCompra[$i]["fechaDePedido"]; ?>
                                     </div>
                                     <div>
-                                        Estado: <?php echo $arrayOrdenesCompra[$i]["estado"]; ?>
+                                        Estado: <?php echo $arrOrdenesDeCompra[$i]["estado"]; ?>
                                     </div>
                                     <div>
                                         <input class="btnCancelar" autocomplete="off" type="submit" name="btnCancelar" id="btnCancelar" value="Cancelar">

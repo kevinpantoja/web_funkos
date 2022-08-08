@@ -1,9 +1,9 @@
 <?php
-include_once("../shared/conexionBD.php");
+//include_once("../shared/conexionBD.php");
 
 class ModelOrdenCompra
 {
-    public function obtenerOrdenCompra()
+    public function listarOrdenesDeCompra()
     {
         include_once("shared/conexionBD.php");
 
@@ -16,8 +16,6 @@ class ModelOrdenCompra
             while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
                 $item = [];
                 $item["idOrdenCompra"] = $row["idOrdenCompra"];
-                $item["idCliente"] = $row["idCliente"];
-                $item["idOrdenProductos"] = $row["idOrdenProductos"];
                 $item["fechaDePedido"] = $row["fechaDePedido"];
                 $item["estado"] = $row["estado"];
                 array_push($items, $item);
@@ -25,6 +23,7 @@ class ModelOrdenCompra
 
             return $items;
         } catch (PDOException $e) {
+            echo $e->getMessage();
             return -1;
         }
     }
