@@ -1,8 +1,15 @@
 <?php
 	class controllerLoginUsuario
 	{
+		public function __construct()
+		{
+			if(!isset($_SESSION)){
+                session_start();
+            }
+		}
 		public function validarUsuario($login,$password)	
 		{
+			
 			include_once('../model/modelUsuario.php');
 			$obUsuario = new modelUsuario();	
 			$respuesta = $obUsuario -> validarSoloUsuario($login);
@@ -25,7 +32,8 @@
 									$categorias = $objProducto -> listarFiltros('categoria_producto');
 									$series = $objProducto -> listarFiltros('serie_producto');
 									include_once('../view/formProductos.php');
-									session_start();
+									// session_start();
+									$_SESSION['login']=$login;
 									$_SESSION["rol"] = "cliente";
 									$_SESSION["cuenta"] = $login;
 									$obj=new FormProductos();
@@ -35,7 +43,8 @@
 									$objUsuarioPrivilegio = new UsuarioPrivilegio();
 									$listaPrivilegios = $objUsuarioPrivilegio -> obtenerPrivilegios($login);
 									include_once('../view/formPrincipal.php');
-									session_start();
+									// session_start();
+									$_SESSION['login']=$login;
 									$_SESSION["rol"] = "admin";
 									$_SESSION["cuenta"] = $login;
 									$objFormPrincipal = new formPrincipal();
