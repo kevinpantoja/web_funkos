@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2022 at 03:58 AM
+-- Generation Time: Aug 08, 2022 at 02:56 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -36,6 +36,13 @@ CREATE TABLE `carrito` (
   `cantidad` int(11) NOT NULL,
   `imagen` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `carrito`
+--
+
+INSERT INTO `carrito` (`id_carrito`, `id_producto`, `id_user`, `nombre`, `precio_prod`, `cantidad`, `imagen`) VALUES
+(8, 102, 'usuario1', 'WILL - STRANGER THINGS SEASON 4', 18, 3, 'funkoST02.jpg');
 
 -- --------------------------------------------------------
 
@@ -81,25 +88,25 @@ CREATE TABLE `estadopedido` (
 --
 
 CREATE TABLE `orden_compra` (
-  `idOrdenCompra` varchar(10) NOT NULL,
+  `idOrdenCompra` int(10) NOT NULL,
   `fechaDePedido` varchar(10) NOT NULL,
   `estado` varchar(20) NOT NULL,
   `idCliente` varchar(20) DEFAULT NULL,
-  `productos` varchar(500) DEFAULT NULL
+  `productos` varchar(500) DEFAULT NULL,
+  `monto` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `orden_compra`
 --
 
-INSERT INTO `orden_compra` (`idOrdenCompra`, `fechaDePedido`, `estado`, `idCliente`, `productos`) VALUES
-('a1', '10/05/2022', 'entregado', 'christopher', '12'),
-('a2', '11/07/2022', 'entregado', 'juan', '13'),
-('a3', '07/08/2022', 'en almacen', 'juan', '14'),
-('a4', '01/08/2022', 'en proceso de entreg', 'juan', '15'),
-('a5', '02/07/2022', 'en proceso de entreg', 'christopher', '16'),
-('a6', '05/08/2022', 'en almacen', 'christopher', '17'),
-('a7', '05/08/2022', 'entregado', 'diego', '18');
+INSERT INTO `orden_compra` (`idOrdenCompra`, `fechaDePedido`, `estado`, `idCliente`, `productos`, `monto`) VALUES
+(1, '10/05/2022', 'entregado', 'christopher', '12', 0),
+(2, '11/07/2022', 'entregado', 'juan', '13', 0),
+(3, '02/07/2022', 'en proceso de entreg', 'christopher', '16', 0),
+(4, '05/08/2022', 'en almacen', 'christopher', '17', 0),
+(5, '05/08/2022', 'entregado', 'diego', '18', 0),
+(7, '08/08/2022', 'en almacen', 'juan', '1', 18);
 
 -- --------------------------------------------------------
 
@@ -177,7 +184,8 @@ CREATE TABLE `proveedor` (
 
 INSERT INTO `proveedor` (`ruc`, `nombre`, `correo`, `telefono`) VALUES
 ('12345678901', 'empresaSAC', 'empresa1@gmail.com', 123456789),
-('12345678902', 'nuevaEmpresaSAC', 'empresa2@gmail.com', 111222333);
+('12345678902', 'nuevaEmpresaSAC', 'empresa2@gmail.com', 111222333),
+('12345678903', 'empresadobleSAC', 'empresa3@gmail.com', 123456781);
 
 -- --------------------------------------------------------
 
@@ -206,6 +214,27 @@ INSERT INTO `serie_producto` (`idSerie`, `nombreSerie`, `descSerie`) VALUES
 (108, 'Pokemon', ''),
 (109, 'Colección Princesas', ''),
 (110, 'Star Wars', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tarjeta`
+--
+
+CREATE TABLE `tarjeta` (
+  `idTarjeta` bigint(20) NOT NULL,
+  `clave` int(11) NOT NULL,
+  `propietario` varchar(50) NOT NULL,
+  `monto` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tarjeta`
+--
+
+INSERT INTO `tarjeta` (`idTarjeta`, `clave`, `propietario`, `monto`) VALUES
+(4557880561812912, 2022, 'Pepe Lucas', 5),
+(123456789012, 123456, 'kevin pantoja pimentel', 57);
 
 -- --------------------------------------------------------
 
@@ -291,11 +320,18 @@ INSERT INTO `usuarios` (`login`, `password`, `estado`, `rol`, `nombre`, `aPatern
 ('estefano', 'f20267a36bd8399c676061f2296d90ef', 1, 'cliente', 'Estefano', 'Carbajal', 'Munoz', 'masculino', 'estefano@gmail.com', '912312323', 'chosica lote 100'),
 ('juan', 'a94652aa97c7211ba8954dd15a3cf838', 1, 'cliente', 'Juan', 'Castillo', 'Bartolo', 'masculino', 'juan@gmail.com', '912569234', 'miraflores'),
 ('usuario1', '24c9e15e52afc47c225b757e7bee1f9d', 1, 'cliente', '', '', '', '', 'usuario1@gmail.com', '', ''),
-('usuario2', '7e58d63b60197ceb55a1c487989a3720', 1, 'administrador', '', '', '', '', '', '', '');
+('usuario2', '7e58d63b60197ceb55a1c487989a3720', 1, 'administrador', '', '', '', '', '', '', ''),
+('nuevo', 'e26c062fedf6b32834e4de93f9c8b644', 1, 'cliente', 'nuevo', 'nuevo', 'nuevo', 'masculino', 'nuevo@nuevo.com', '123456789', 'dsdsadsadsdasdsad');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `carrito`
+--
+ALTER TABLE `carrito`
+  ADD PRIMARY KEY (`id_carrito`);
 
 --
 -- Indexes for table `categoria_producto`
@@ -357,6 +393,18 @@ ALTER TABLE `usuarioprivilegios`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `carrito`
+--
+ALTER TABLE `carrito`
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `orden_compra`
+--
+ALTER TABLE `orden_compra`
+  MODIFY `idOrdenCompra` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `privilegios`
